@@ -1,0 +1,644 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FP5R7YX8ED"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-FP5R7YX8ED');
+    </script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PaSCo: Urban 3D Panoptic Scene Completion with Uncertainty Awareness</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <style>
+        .item-row {
+            border-bottom: 1px solid #d6d6d6;
+        }
+        .novel-depth-imgs {
+            margin-top:10px
+        }
+        .novel-depth-input-img {
+            margin-top:0px
+        }
+        .arrow {
+            right: -8px!important
+        }
+        .arrow-3d {
+            right: -8px!important
+        }
+        .rgbs {
+            width: 38%;
+            padding:1px;
+            background-color: rgb(168 0 219);
+            /* border-color: rgb(168 0 219); */
+            border: none;
+        }
+        .novel-depth-item {
+            margin-bottom: 1rem;
+        }
+        .input-td {
+            padding-bottom: 12px;
+        }
+        .traj-vid {
+            width: 80%;
+        }
+        .novel-depth-input-img {
+            background-color: rgb(1 126 0);
+            border: none;
+            /* border-color: rgb(1 126 0); */
+        }
+        .novel-depth-imgs {
+            background-color: rgb(168 0 219);
+            border: none;
+            /* border-color: rgb(168 0 219); */
+        }
+        .carousel-item{
+            height: 500px;
+            /* border: 1px solid #d6d6d6; */
+            border-radius: 5px;
+        }
+        .nav-link:hover {
+            cursor: pointer;
+        }
+        #progressBarContainer {
+            /* width: 100%; */
+            /* background-color: #ddd; */
+            position: absolute;
+            top:3px;
+            left: 3px;
+        }
+        a {
+            text-decoration: none;
+        }
+        #carouselExampleIndicators .carousel-item {
+            transition: none !important;
+        }
+
+        .indicator-button {
+            margin-left: 2px;
+            margin-right: 2px;
+        }
+
+       
+    </style>
+    
+</head>
+  <body>
+    <div class="container">
+        <h1 class="text-center display-3 mt-4"><b>PaSCo</b></h1>
+        <h3 class="text-center display-5">Urban 3D Panoptic Scene Completion with <br/>Uncertainty Awareness</h3>
+        <!-- <h4 class="text-center">
+            ICCV 2023
+        </h4> -->
+        <div class="row mt-3">   
+            <ul class="list-inline text-center">
+                <li class="list-inline-item" style="padding-right: 20px;"><h4><a href="https://anhquancao.github.io/">Anh-Quan Cao</a></h4></li>
+                <li class="list-inline-item" style="padding-right: 20px;"><h4><a href="https://www.3dunderstanding.org/">Angela Dai</a></h4></li>
+                <li class="list-inline-item"><h4><a href="https://team.inria.fr/rits/membres/raoul-de-charette/">Raoul de Charette</a></h4></li>
+            </ul>
+            <div class="text-center">
+                <ul class="list-inline text-center">
+                    <li class="list-inline-item">
+                        <a href="https://www.inria.fr/en">
+                            <img src="imgs/inr_logo_rouge.png" class="img-fluid" style="width: 150px;" alt="Inria logo"/>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="https://www.tum.de/en/">
+                            <img src="imgs/tum_logo.png" class="img-fluid" style="width: 100px;" alt="TUM logo">
+                        </a>
+                    </li>
+                </ul>
+                
+            </div>
+        </div>
+
+
+        <div class="row mt-4">
+            <div class=" mx-auto">
+                <div style="text-align: center;">
+                    <a class="btn btn-dark" href="" target="_blank">
+                        <!-- <img src="imgs/paper_icon.png" height="80px"> -->
+                            <span class="icon">
+                                <i class="fa-solid fa-file-lines"></i>
+                            </span>
+                            <span>Paper</span>
+                        </a>
+                    
+                    <a class="btn btn-dark" href="" target="_blank">
+                    <!-- <img src="imgs/paper_icon.png" height="80px"> -->
+                        <span class="icon">
+                            <i class="ai ai-arxiv"></i>
+                        </span>
+                        <span>arXiv</span>
+                    </a>
+                    
+                    <a class="btn btn-dark" href="https://youtu.be/z392JF_j-rs" target="_blank">
+                        <span class="icon">
+                            <i class="fab fa-youtube"></i>
+                        </span>
+                        <span>Video</span>
+                    </a>
+
+                
+                    <a class="btn btn-dark" href="https://github.com/astra-vision/PaSCo" target="_blank" >
+                        <span class="icon">
+                            <i class="fab fa-github"></i>
+                        </span>
+                        <span>Code</span>
+                    </a>
+                </div>
+                    
+               
+            </div>
+            
+        </div>
+
+        <!-- <div class="row novel-depth-item position-relative mt-4">
+            <div class="col-md-8 text-center mx-auto">
+                <img src="imgs/teaser_v2.png" style="margin-top: 10px;"  class=" rounded img-fluid ">
+            </div>  
+        </div>   -->
+        <div class="row mt-4">
+            <!-- <h3 class="text-center">Teaser</h3> -->
+            <div class="mb-4 col-md-10 mx-auto text-center ">
+                <!-- <h6 class="text-center">Panoptic Scene Completion with Uncertainty Awareness</h6> -->
+                <!-- <img src="imgs/psc_1.GIF" style="margin-top: 0px; width: 100%;"  class=" rounded img-fluid "> -->
+                <div>
+                    <video poster="" autoplay="" muted loop=""  style="width: 100%;" style="pointer-events: none;">
+                        <source src="imgs/psc_teaser.mp4" type="video/mp4">
+                    </video>             
+                </div>         
+            </div>  
+            <!-- <div class="col-md-8 text-center mx-auto mt-3">
+                <h6 class="text-center">Robustness evaluation on Robo3D</h6>
+                <img src="imgs/psc_2.GIF" style="margin-top: 0px;"  class=" rounded img-fluid ">
+            </div>   -->
+        </div>  
+
+        <div class="row">
+            
+            <div class="  col-md-10 mx-auto mx-auto">
+
+
+                <div class="card">
+                    <div class="card-header">
+                        <ul class="nav nav-pills nav-3d justify-content-center">
+                            <li class="nav-item">
+                              <a class="nav-link ">Input</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link">Semantic</a>
+                            </li>
+                            <!-- <li class="nav-item">
+                              <a class="nav-link" href="#">Instance</a>
+                            </li> -->
+                            <li class="nav-item">
+                              <a class="nav-link active">Panoptic</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link">Voxel Uncertainty</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link">Instance Uncertainty</a>
+                              </li>
+                        </ul>
+                    </div>
+                    
+                    
+                    <div class="card-body">
+               
+                        <div id="carouselExampleIndicators" class="carousel carousel-dark" data-bs-ride="false">
+                            <!-- <div class="carousel-indicators" id="carouselIndicators"></div> -->
+                            
+                            <div class="carousel-inner" id="carouselInner">
+                                <div class="alert alert-light position-absolute top-1 start-50 translate-middle" style="top: 30px;" role="alert">
+                                    <h6>Click and drag to interact</h6>
+                                </div>
+                                <div id="progressBarContainer" class="spinner-border text-primary" role="status" style="display: none;">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="card-footer text-center">
+                        <div class="custom-indicators" id="carouselIndicators">
+                            <!-- <button type="button" class="btn btn-secondary" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0">Scene 1</button> -->
+                            <!-- <button type="button" class="btn btn-secondary" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1">Scene 2</button> -->
+                            <!-- Add more buttons as needed -->
+                        </div>
+                    </div>
+                    
+                    
+                    
+                </div>
+            </div>
+        </div>
+
+       
+    
+        <div class="row mt-4">
+            <div class="col-md-6 text-center mx-auto">
+                <h3 class="text-center"><i class="fa-solid fa-file"></i> Abstract</h3>
+                <p  style="text-align: justify;">
+                    We propose the task of Panoptic Scene Completion (PSC) which extends the recently popular Semantic Scene Completion (SSC) task with instance-level information to produce a richer understanding of the 3D scene. 
+                    Our PSC proposal utilizes a hybrid mask-based technique on the non-empty voxels from sparse multi-scale completions. 
+                    Whereas the SSC literature overlooks uncertainty which is critical for robotics applications, we instead propose an efficient ensembling to estimate both voxel-wise and instance-wise uncertainties along PSC. 
+                    This is achieved by building on a multi-input multi-output (MIMO) strategy, while improving performance and yielding better uncertainty for little additional compute. Additionally, we introduce a technique to aggregate permutation-invariant mask predictions. 
+                    Our experiments demonstrate that our method surpasses all baselines in both Panoptic Scene Completion and uncertainty estimation on three large-scale autonomous driving datasets.
+                </p>
+            </div>    
+        </div>    
+        
+
+
+
+       
+        
+
+
+       
+
+        <div class="row col-md-10 mx-auto mb-5 mt-4">
+            <h3 class="text-center"> <i class="fab fa-youtube"></i> Demo</h3>
+            <div class="ratio ratio-16x9">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/z392JF_j-rs?si=PK4jJuRneYOFB9me" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+        </div>
+        
+
+        <div class="row col-md-10 mx-auto mb-5">      
+            <h3 class="text-center"><i class="fa-solid fa-microchip "></i> Overview of our method</h3>    
+            <div>
+                <img src="imgs/arch.png" style="width: 100%;" class="rounded img-fluid" alt="Overview of our method">                
+            </div>  
+            <div style="text-align: justify;">
+                Our method aims to predict multiple variations of Panoptic Scene Completion (PSC) given an incomplete 3D point cloud, while allowing uncertainty estimation through mask ensembling. 
+		For PSC we employ a sparse 3D generative U-Net with a transformer decoder. The uncertainty awareness is enabled using multiple subnets each operating on a different augmented version of an input data source. 
+        PaSCo allows the first Panoptic Scene Completion while providing a robust method for uncertainty estimation. 
+        Instance-wise uncertainty shows only "things'' classes for clarity.
+            </div>           
+        </div>
+
+        <div class="row col-md-10 mx-auto mb-5">  
+            <h3 class="text-center"><i class="fa-solid fa-square-poll-vertical"></i> Panoptic Scene Completion Comparision</h3>   
+            <!-- <div>
+                <img src="imgs/quals.png" style="width: 100%;" class="rounded img-fluid" alt="Overview of our method">                
+            </div>  -->
+            <div>
+                <video poster="" autoplay="" muted loop=""  style="width: 100%;" style="pointer-events: none;">
+                    <source src="imgs/psc_qual.mp4" type="video/mp4">
+                </video>             
+            </div>  
+        </div>
+
+        <div class="row col-md-10 mx-auto mb-5">  
+            <h3 class="text-center"><i class="fa-solid fa-circle-exclamation"></i> Uncertinaty Estimation Comparision</h3>   
+            <div>
+                <video poster="" autoplay="" muted loop=""  style="width: 100%;" style="pointer-events: none;">
+                    <source src="imgs/unc_qual.mp4" type="video/mp4">
+                </video>             
+            </div>  
+        </div>
+
+        <div class="row col-md-10 mx-auto mb-5">  
+            <h3 class="text-center"><i class="fa-solid fa-helmet-safety"></i> Robusness Evaluation on Robo3D</h3>   
+            <div>
+                <img src="imgs/uncertainty.png" style="width: 100%;" class="rounded img-fluid" alt="Overview of our method">                
+            </div>
+            <div>
+                <video poster="" autoplay="" muted loop=""  style="width: 100%;" style="pointer-events: none;">
+                    <source src="imgs/robo3d_qual.mp4" type="video/mp4">
+                </video>             
+            </div>  
+        </div>
+        
+        
+        <div class="row col-md-10 mx-auto mb-5">  
+            <h3 class="text-center"><i class="fa-solid fa-location-crosshairs"></i> Citation</h3>
+           
+            <div>
+                    If you find this project useful for your research, please cite
+                    <div class="card-block" style="background-color: #f5f5f5; padding:8px;">
+                        <!-- <div class="card-text" style="text-align: left;background-color: #f5f5f5;">                                                 -->
+<pre class="card-text" style="text-align: left;">
+@InProceedings{cao2023pasco,
+    author    = {Cao, Anh-Quan and Dai, Angela and de Charette, Raoul},
+    title     = {PaSCo: Urban 3D Panoptic Scene Completion with Uncertainty Awareness},
+    booktitle={arXiv},
+    year={2023},
+}
+</pre>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-5">
+            <div class="col-md-10 mx-auto">
+                <h3 class="text-center"><i class="fa-sharp fa-solid fa-building-columns"></i> Acknowledgements</h3>
+                <div>The research was supported by the French project SIGHT (ANR-20-CE23-0016), the ERC Starting Grant SpatialSem (101076253), and the SAMBA collaborative project co-funded by BpiFrance in the Investissement d’Avenir Program. Computation was per- formed using HPC resources from GENCI–IDRIS (2023-AD011014102, AD011012808R2). We thank all Astra-Vision members for their valu- able feedbacks, including Andrei Bursuc for his excellent suggestions and Tetiana Martyniuk for her kind proofreading. </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js" integrity="sha512-J9QfbPuFlqGD2CYVCa6zn8/7PEgZnGpM5qtFOBZgwujjDnG5w5Fjx46YzqvIh/ORstcj7luStvvIHkisQi5SKw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        
+
+        
+    
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/f790f706b7.js" crossorigin="anonymous"></script>
+    
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "./js/three.module.js"
+            }
+        }
+    </script>
+    <script type="module">
+        import * as THREE from 'three';
+        import { PCDLoader } from './js/PCDLoader.js';
+        import { OrbitControls } from './js/OrbitControls.js';
+    
+        let renderer;
+        let currentCamera, currentControls; // Keep track of the current camera and controls
+        let savedCameraPosition, savedCameraRotation, savedControlsTarget;
+        savedCameraPosition = new THREE.Vector3(0, 20, -14);  // Initial camera position
+        savedCameraRotation = new THREE.Euler();             // Initial camera rotation
+        savedControlsTarget = new THREE.Vector3(0, 10, 0);    // Initial controls target
+
+    
+        function initScene(containerId, modelPath) {
+            const container = document.getElementById(containerId);
+            let width = container.parentElement.clientWidth;
+            let height = container.parentElement.clientHeight;
+
+            // Clear existing content in the container
+            while (container.firstChild) {
+                container.removeChild(container.firstChild);
+            }
+
+            // Scene
+            const scene = new THREE.Scene();
+
+             // Camera
+            const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+            camera.position.set(0, 10, -12);
+            currentCamera = camera; // Update current camera
+
+
+            
+             // Renderer (reuse if already created)
+            if (!renderer) {
+                renderer = new THREE.WebGLRenderer();
+            } else {
+                // Renderer
+                const renderer = new THREE.WebGLRenderer();
+            }
+            renderer.setSize(width, height);
+            renderer.setClearColor( 0xffffff, 0);
+
+            // Append renderer to the container
+            container.appendChild(renderer.domElement);
+
+            // Orbit Controls
+            const controls = new OrbitControls(camera, renderer.domElement);
+            currentControls = controls;
+            controls.enableDamping = true; // Enable damping
+            controls.dampingFactor = 0.05;
+            controls.minDistance = 1;
+            controls.maxDistance = 500;
+            controls.panSpeed = 2;
+            controls.zoomSpeed = 1.2;
+            controls.rotateSpeed = 0.7;
+            controls.target.set(0, 8, 0);
+
+            if (savedCameraPosition && savedCameraRotation && savedControlsTarget) {
+                camera.position.copy(savedCameraPosition);
+                camera.rotation.copy(savedCameraRotation);
+                controls.target.copy(savedControlsTarget);
+            }
+
+            // PCD Loader
+            const loader = new PCDLoader();
+            loader.load(
+                modelPath,
+                function (points) {
+                    points.material.size = 0.3; // Set this to your desired point size
+
+                    scene.add(points);
+                    animate();
+                    hideProgressBar(); // Hide the progress bar on success
+                },
+                function (xhr) {
+                    // console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+                    const percentComplete = xhr.loaded / xhr.total * 100;
+                    // updateProgressBar(percentComplete);
+                },
+                function (error) {
+                    console.log('An error happened', error);
+                    hideProgressBar(); // Hide the progress bar on error
+                }
+            );
+            // Animation Loop
+            function animate() {
+                requestAnimationFrame(animate);
+                controls.update(); // Required for damping
+
+          
+                
+                renderer.render(scene, camera);
+            
+            }
+
+            // Add this function inside your initScene function
+            function onWindowResize() {
+                // Update camera aspect ratio and renderer size
+                // camera.aspect = window.innerWidth / window.innerHeight;
+                // const container = document.getElementById(containerId);
+                const container = document.getElementById(containerId);
+                let width = container.parentElement.clientWidth;
+                let height = container.parentElement.clientHeight;
+
+                camera.aspect = width / height;
+                camera.updateProjectionMatrix();
+                renderer.setSize(width, height);
+            }
+
+            // Add event listener for window resize
+            window.addEventListener('resize', onWindowResize, false);
+        }
+
+    // Call this function to switch to a different scene
+    function switchScene(containerId, modelPath) {
+
+        showProgressBar(); // Show the progress bar
+        
+    
+
+
+        // if (currentControls) {
+        //     currentControls.dispose(); // Dispose current controls if exist
+        // }
+        if (currentCamera && currentControls) {
+            savedCameraPosition = currentCamera.position.clone();
+            savedCameraRotation = currentCamera.rotation.clone();
+            savedControlsTarget = currentControls.target.clone();
+        }
+        initScene(containerId, modelPath); // Initialize new scene
+    }
+    function showProgressBar() {
+        document.getElementById('progressBarContainer').style.display = 'block';
+        // updateProgressBar(0);
+    }
+
+    function hideProgressBar() {
+        document.getElementById('progressBarContainer').style.display = 'none';
+    }
+
+    function updateProgressBar(percent) {
+        const progressBar = document.getElementById('progressBar');
+        progressBar.style.width = percent + '%';
+    }
+
+    
+        
+    const frame_ids = [1700, 1795, 2025, 2240, 2575, 2720, 2815, 3115];
+
+    const input_model_paths = frame_ids.map(id => `imgs/ours3_input_${id}_3.pcd`);
+    const semantic_model_paths = frame_ids.map(id => `imgs/ours3_semantic_${id}_3.pcd`);
+    const panoptic_model_paths = frame_ids.map(id => `imgs/ours3_panop_${id}_3.pcd`);
+    const vox_unc_model_paths = frame_ids.map(id => `imgs/ours3_median_${id}.pcd`);
+    const ins_unc_model_paths = frame_ids.map(id => `imgs/ours3_thing_conf_${id}_3.pcd`);
+
+    const indicators = document.getElementById('carouselIndicators');
+    const carouselInner = document.getElementById('carouselInner');
+
+    // Remove existing indicators
+    while (carouselIndicators.firstChild) {
+        indicators.removeChild(carouselIndicators.firstChild);
+    }
+
+    // frame_ids.forEach((id, index) => {
+    //     const button = document.createElement('button');
+    //     button.type = 'button';
+    //     button.className = 'btn btn-secondary';
+    //     button.setAttribute('data-bs-target', '#carouselExampleIndicators');
+    //     button.setAttribute('data-bs-slide-to', index.toString());
+    //     button.textContent = 'Scene ' + (index + 1);
+
+    //     indicators.appendChild(button);
+    // });
+
+    frame_ids.forEach((id, index) => {
+        // Create carousel indicator
+        const indicator = document.createElement('button');
+        indicator.type = 'button';
+        indicator.textContent = 'Scene ' + (index + 1);
+        indicator.className = 'btn btn-secondary btn-sm indicator-button';
+        indicator.dataset.bsTarget = '#carouselExampleIndicators';
+        indicator.dataset.bsSlideTo = index;
+        indicator.setAttribute('aria-label', `Slide ${index + 1}`);
+        
+        if (index === 0) indicator.classList.add('active');
+        indicators.appendChild(indicator);
+
+        // Create carousel item
+        const item = document.createElement('div');
+        item.classList.add('carousel-item');
+        if (index === 0) item.classList.add('active');
+        item.id = `carouselItem${index + 1}`;
+
+        const sceneContainer = document.createElement('div');
+        sceneContainer.id = `sceneContainer${index + 1}`;
+        item.appendChild(sceneContainer);
+
+        carouselInner.appendChild(item);
+    });
+
+
+        // Initialize the first scene
+    switchScene('sceneContainer1', panoptic_model_paths[0]);
+    
+    var currentTab = "Panoptic"; // Variable to hold the value of the current tab
+    var model_paths = [];
+    // Event listener for carousel slide
+    $('#carouselExampleIndicators').on('slid.bs.carousel', function (e) {
+        const nextSlideId = e.relatedTarget.id;
+        const nextContainerId = 'sceneContainer' + nextSlideId.charAt(nextSlideId.length - 1);
+        model_paths = updateModelPaths(); // Update model paths based on current tab
+        
+        let model_path = model_paths[parseInt(nextSlideId.charAt(nextSlideId.length - 1)) - 1];
+        if (!document.getElementById(nextContainerId).hasChildNodes()) {
+            switchScene(nextContainerId, model_path);
+        }
+
+        const indicators = document.querySelectorAll('#carouselIndicators button');
+        indicators.forEach((indicator, index) => {
+            let item_id = parseInt(nextSlideId.charAt(nextSlideId.length - 1)-1)
+            if (index === item_id) {
+                indicator.classList.add('active');
+            } else {
+                indicator.classList.remove('active');
+            }
+        });
+    });
+
+    $(document).ready(function() {
+        $(".nav-3d .nav-item .nav-link").click(function() {
+            $(".nav-3d .nav-item .nav-link").removeClass("active");
+            $(this).addClass("active");
+            currentTab = $(this).text().trim();
+            model_paths = updateModelPaths(); // Update model paths based on clicked tab
+            // Find the active carousel item and get its ID
+            var activeCarouselItemId = $('#carouselExampleIndicators .carousel-item.active').attr('id');
+            var activeCarouselIndex = activeCarouselItemId ? activeCarouselItemId.charAt(activeCarouselItemId.length - 1) : '1';
+            var nextContainerId = 'sceneContainer' + activeCarouselIndex;
+
+            // Initialize the scene for the active carousel item
+            switchScene(nextContainerId, model_paths[parseInt(activeCarouselIndex) - 1]);
+        });
+    });
+
+    function updateModelPaths() {
+        
+        switch (currentTab) {
+            case "Input":
+                model_paths = input_model_paths;
+                break;
+            case "Semantic":
+                model_paths = semantic_model_paths;
+                break;
+            case "Panoptic":
+                model_paths = panoptic_model_paths;
+                break;
+            case "Voxel Uncertainty":
+                model_paths = vox_unc_model_paths;
+                break;
+            case 'Instance Uncertainty':
+                model_paths = ins_unc_model_paths;
+                break;
+        }
+        return model_paths
+    }
+    </script>
+    </body>
+</html>
