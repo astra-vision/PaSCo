@@ -21,6 +21,17 @@
 
 </div>
 
+If you find this work or code useful, please cite our [paper](https://arxiv.org/abs/2212.02501) and [give this repo a star](https://github.com/astra-vision/SceneRF/stargazers):
+```
+@misc{cao2023pasco,
+      title={PaSCo: Urban 3D Panoptic Scene Completion with Uncertainty Awareness}, 
+      author={Anh-Quan Cao and Angela Dai and Raoul de Charette},
+      year={2023},
+      eprint={2312.02158},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
+```
 
 # Teaser
 ![](./teaser/psc.GIF)
