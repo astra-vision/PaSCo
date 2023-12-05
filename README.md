@@ -16,7 +16,7 @@
 
 <br/>
 
-[![arXiv](https://img.shields.io/badge/arXiv--darkred)]() 
+[![arXiv](https://img.shields.io/badge/arXiv-2312.02158-darkred)](https://arxiv.org/abs/2312.02158) 
 [![Project page](https://img.shields.io/badge/Project%20Page-PaSCo-darkgreen)](https://astra-vision.github.io/PaSCo/)
 
 </div>
