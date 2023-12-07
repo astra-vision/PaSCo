@@ -47,5 +47,5 @@ If you find this work or code useful, please cite our [paper](https://arxiv.org/
 # Acknowledgment
 The research was supported by the French project SIGHT (ANR-20-CE23-0016), the ERC Starting Grant SpatialSem (101076253), and the SAMBA collaborative project co-funded by
 BpiFrance in the Investissement d’Avenir Program. Computation was performed using HPC resources from GENCI–IDRIS (2023-AD011014102,
-AD011012808R2). We thank all Astra-Vision members for their valuable feedbacks, including Andrei Bursuc for his excellent suggestions and
+AD011012808R2). We thank all Astra-Vision members for their valuable feedbacks, including Andrei Bursuc and Gilles Puy for excellent suggestions and
 Tetiana Martyniuk for her kind proofreading.
