@@ -2,7 +2,7 @@
 
 # PaSCo: Urban 3D Panoptic Scene Completion with Uncertainty Awareness
 
-<!-- arXiv 2023 -->
+CVPR 2024
 
 
 [Anh-Quan Cao](https://anhquancao.github.io)<sup>1</sup>&nbsp;&nbsp;&nbsp;
