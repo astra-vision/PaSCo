@@ -41,6 +41,7 @@ If you find this work or code useful, please cite our [paper](https://arxiv.org/
 
 
 # News
+- 27/02/2024: PaSCo has been accepted to [CVPR 2024](https://cvpr.thecvf.com/).
 - 05/12/2023: Paper released on arXiv! Code will be released soon! Please [watch this repo](https://github.com/astra-vision/PaSCo/watchers) for updates.
 
 
