@@ -42,6 +42,7 @@ If you find this work or code useful, please cite our [paper](https://arxiv.org/
 
 
 # News
+- 06/04/2024: Dataset download instructions and label generation code for SemanticKITTI are now available. KITTI-360 will be released next weekend 🚨.
 - 04/04/2024: PaSCo has been accepted as Oral paper at [CVPR 2024](https://cvpr.thecvf.com/) (0.8% = 90/11,532).
 - 05/12/2023: Paper released on arXiv! Code will be released soon! Please [watch this repo](https://github.com/astra-vision/PaSCo/watchers) for updates.
 
