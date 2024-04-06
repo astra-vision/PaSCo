@@ -1,5 +1,6 @@
 <div align='center'>
-
+  <img src="teaser/logo.png" style="border-radius:50%" align="center" width="44%">
+      
 # PaSCo: Urban 3D Panoptic Scene Completion with Uncertainty Awareness
 
 CVPR 2024 Oral
