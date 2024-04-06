@@ -118,7 +118,7 @@ Please download the following data into a folder e.g. **/gpfsdswork/dataset/Sema
       ```
       tar xvf kitti_instance_label_v2.tar.gz
       ```
-   4. Your folder structure should look as follows:
+4. Your folder structure should look as follows:
       ```
       /gpfsscratch/rech/kvd/uyl37fq/pasco_preprocess/kitti
       └── instance_labels_v2
@@ -135,7 +135,7 @@ Please download the following data into a folder e.g. **/gpfsdswork/dataset/Sema
           └── 10
       ```
    
-4. The **partial dataloader** for the KITTI dataset is available [here](https://github.com/astra-vision/PaSCo/blob/main/pasco/data/semantic_kitti/kitti_dataset.py). The full version will be released later.
+5. The **partial dataloader** for the KITTI dataset is available [here](https://github.com/astra-vision/PaSCo/blob/main/pasco/data/semantic_kitti/kitti_dataset.py). The full version will be released later.
 
 
 ## 2.2. KITTI-360
