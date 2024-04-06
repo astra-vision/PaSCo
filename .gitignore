@@ -1,0 +1,26 @@
+# Python intermediate files
+*.pyc
+*.pyo
+*.egg-info/
+__pycache__/
+*.pyd
+
+# Virtual environment
+venv/
+*.venv
+.env
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+
+
+# IDEs
+# PyCharm
+.idea/
+
+# VS Code
+.vscode/
+
+# MacOS system files
+.DS_Store
