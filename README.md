@@ -38,7 +38,7 @@ If you find this work or code useful, please cite our [paper](https://arxiv.org/
 - [News](#news) 
 - [1. Installation](#1-installation)
 - [2. Data](#2-data)
-- [3. Panoptic labels generation](#3-panoptic-label-generation)
+- [3. Panoptic labels generation](#3-panoptic-labels-generation)
 
 
 # News
