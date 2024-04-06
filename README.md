@@ -93,6 +93,7 @@ Please download the following data into a folder e.g. **/gpfsdswork/dataset/Sema
     ```
 
 # 3. Panoptic labels generation
+## 3.1. Semantic KITTI
 1. Create a folder to store preprocess data for Semantic KITTI dataset e.g. **/gpfsscratch/rech/kvd/uyl37fq/pasco_preprocess/kitti** .
 2. Execute the command below to generate panoptic labels, or **move to the next step** to directly download the **pre-generated labels**:
       ```
@@ -138,7 +139,7 @@ Please download the following data into a folder e.g. **/gpfsdswork/dataset/Sema
 5. The **partial dataloader** for the KITTI dataset is available [here](https://github.com/astra-vision/PaSCo/blob/main/pasco/data/semantic_kitti/kitti_dataset.py). The full version will be released later.
 
 
-## 2.2. KITTI-360
+## 3.2. KITTI-360
 
 
 
