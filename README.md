@@ -100,10 +100,11 @@ Please download the following data into a folder e.g. **/gpfsdswork/dataset/Sema
       python label_gen/gen_instance_labels.py \
           --kitti_config=pasco/data/semantic_kitti/semantic-kitti.yaml \
           --kitti_root=/gpfsdswork/dataset/SemanticKITTI \
-          --kitti_preprocess_root=/gpfsscratch/rech/kvd/uyl37fq/pasco_preprocess/kitti
+          --kitti_preprocess_root=/gpfsscratch/rech/kvd/uyl37fq/pasco_preprocess/kitti \
+          --n_process=10
       ```
 > [!NOTE]
-> This doesn't require GPU. It tooks ~10 hours to process 4649 files with 10 processes.
+> This command doesn't need GPU. Processing 4649 files took approximately 10 hours using 10 processes. The number of processes can be adjusted by modifying the `n_process` parameter.
 
 3. We provide the dataloader for KITTI dataset at . You can run this file directly with the following
 
