@@ -143,8 +143,8 @@ def main(kitti_config, kitti_root, kitti_preprocess_root, n_process):
         kitti_root=kitti_root,
         kitti_preprocess_root=kitti_preprocess_root,
         frame_interval=5)
-    dataloader = DataLoader(dataset, shuffle=True, num_workers=10)
-    dataset[0]
+    dataloader = DataLoader(dataset, shuffle=True, num_workers=n_process)
+
     for data_dict in tqdm(dataloader):
         pass
 
