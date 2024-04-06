@@ -93,8 +93,8 @@ Please download the following data into a folder e.g. **/gpfsdswork/dataset/Sema
     ```
 
 # 3. Panoptic labels generation
-1. Create a folder to store preprocess data e.g. /gpfsscratch/rech/kvd/uyl37fq/pasco_preprocess/kitti .
-2. Run the following command to generate panoptic labels:
+1. Create a folder to store preprocess data for Semantic KITTI dataset e.g. **/gpfsscratch/rech/kvd/uyl37fq/pasco_preprocess/kitti** .
+2. Execute the command below to generate panoptic labels, or **move to the next step** to directly download the **pre-generated labels**:
       ```
       cd PaSCo/
       python label_gen/gen_instance_labels.py \
@@ -105,8 +105,37 @@ Please download the following data into a folder e.g. **/gpfsdswork/dataset/Sema
       ```
 > [!NOTE]
 > This command doesn't need GPU. Processing 4649 files took approximately 10 hours using 10 processes. The number of processes can be adjusted by modifying the `n_process` parameter.
-
-3. We provide the dataloader for KITTI dataset at . You can run this file directly with the following
+3. You can download the generated panoptic labels for Semantic KITTI:
+   1. Go to the preprocess folder for KITTI:
+      ```
+      cd /gpfsscratch/rech/kvd/uyl37fq/pasco_preprocess/kitti
+      ```
+   2. Download the compressed file:
+      ```
+      wget https://github.com/astra-vision/PaSCo/releases/download/v0.0.1/kitti_instance_label_v2.tar.gz
+      ```
+   3. Extract the file:
+      ```
+      tar xvf kitti_instance_label_v2.tar.gz
+      ```
+   4. Your folder structure should look as follows:
+      ```
+      /gpfsscratch/rech/kvd/uyl37fq/pasco_preprocess/kitti
+      └── instance_labels_v2
+          ├── 00
+          ├── 01
+          ├── 02
+          ├── 03
+          ├── 04
+          ├── 05
+          ├── 06
+          ├── 07
+          ├── 08
+          ├── 09
+          └── 10
+      ```
+   
+4. The **partial dataloader** for the KITTI dataset is available [here](https://github.com/astra-vision/PaSCo/blob/main/pasco/data/semantic_kitti/kitti_dataset.py). The full version will be released later.
 
 
 ## 2.2. KITTI-360
