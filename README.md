@@ -2,7 +2,7 @@
  
 # PaSCo: Urban 3D Panoptic Scene Completion with Uncertainty Awareness
 
-CVPR 2024 Oral - Best paper ward candidate
+CVPR 2024 Oral - Best paper award candidate
 
 
 [Anh-Quan Cao](https://anhquancao.github.io)<sup>1</sup>&nbsp;&nbsp;&nbsp;
