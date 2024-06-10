@@ -143,11 +143,13 @@ Please download the following data into a folder e.g. **/gpfsdswork/dataset/Sema
 ## 3.2. KITTI-360
 
 # 4. Training and evaluation
-## 4.1. Training PaSCo w/o MIMO
+## 4.1. PaSCo w/o MIMO
+## 4.1.1 Training
 > [!NOTE]
 > The generated instance label is assumed to be stored in os.path.join(preprocess_root, "instance_labels_v2")
-
-1. Run the following command to train PaSCo w/o MIMO with batchsize of 2 on 2 V100-32G GPUs (1 item per GPU):
+1. Change the `dataset_preprocess_root` and `dataset_root` to the preprocess and raw data folder respectively.
+2. The `log_dir` is the folder to store the training logs and checkpoints.
+3. Run the following command to train PaSCo w/o MIMO with batchsize of 2 on 2 V100-32G GPUs (1 item per GPU):
 
       ```
       cd PaSCo/
@@ -161,10 +163,11 @@ Please download the following data into a folder e.g. **/gpfsdswork/dataset/Sema
             --sample_query_class=True --n_infers=1
     
       ```
-      
+> [!NOTE]
+> During training, the reported metric is lower than the final metrics because we limit the number of voxels to prevent running out of memory. The final metric is determined during evaluation and is used solely to assess if the training is progressing well.
 
-## 4.2. Evaluate PaSCo w/o MIMO
-1. Download the pretrained checkpoint at [here]() and put it into `ckpt` folder.
+## 4.1.2 Evaluation
+1. Download the pretrained checkpoint at [here]() and put it into `ckpt` folder or use your trained checkpoint.
 2. Run the following command to evaluate PaSCo w/o MIMO on 1 V100-32G GPUs (1 item per GPU). CHECKPOINT_PATH is the path to the downloaded checkpoint:
       ```
       python scripts/eval.py --n_infers=1 --model_path=ckpt/pasco_single.ckpt
@@ -206,7 +209,8 @@ Please download the following data into a folder e.g. **/gpfsdswork/dataset/Sema
 > Note that ssc ece = (ssc empty ece + ssc nonempty ece)/2 and ssc nll = (ssc empty nll + ssc nonempty nll)/2.
 > The inference time reported in the paper was measured on an A100 GPU. So it will be faster than on v100.
 
-
+## 4.2. PaSCo w/ MIMO
+WORK IN PROGRESS
 
 # Acknowledgment
 The research was supported by the French project SIGHT (ANR-20-CE23-0016), the ERC Starting Grant SpatialSem (101076253), and the SAMBA collaborative project co-funded by
