@@ -147,7 +147,7 @@ WORK IN PROGRESS
 ## 4.1. PaSCo w/o MIMO
 ## 4.1.1 Training
 > [!NOTE]
-> The generated instance label is assumed to be stored in os.path.join(preprocess_root, "instance_labels_v2")
+> The generated instance label is supposed to be stored in os.path.join(dataset_preprocess_root, "instance_labels_v2")
 1. Change the `dataset_preprocess_root` and `dataset_root` to the preprocess and raw data folder respectively.
 2. The `log_dir` is the folder to store the training logs and checkpoints.
 3. Run the following command to train PaSCo w/o MIMO with batchsize of 2 on 2 V100-32G GPUs (1 item per GPU):
