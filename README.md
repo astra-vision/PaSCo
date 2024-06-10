@@ -137,10 +137,10 @@ Please download the following data into a folder e.g. **/gpfsdswork/dataset/Sema
           └── 10
       ```
    
-5. The **partial dataloader** for the KITTI dataset is available [here](https://github.com/astra-vision/PaSCo/blob/main/pasco/data/semantic_kitti/kitti_dataset.py). The full version will be released later.
 
 
 ## 3.2. KITTI-360
+WORK IN PROGRESS
 
 # 4. Training and evaluation
 ## 4.1. PaSCo w/o MIMO
@@ -164,7 +164,7 @@ Please download the following data into a folder e.g. **/gpfsdswork/dataset/Sema
     
       ```
 > [!NOTE]
-> During training, the reported metric is lower than the final metrics because we limit the number of voxels to prevent running out of memory. The final metric is determined during evaluation and is used solely to assess if the training is progressing well.
+> During training, the reported metric is lower than the final metrics because we limit the number of generated voxels to prevent running out of memory. The final metric is determined during evaluation and is used solely to assess if the training is progressing well.
 
 ## 4.1.2 Evaluation
 1. Download the pretrained checkpoint at [here]() and put it into `ckpt` folder or use your trained checkpoint.
@@ -206,7 +206,7 @@ Please download the following data into a folder e.g. **/gpfsdswork/dataset/Sema
       allocated 8895.119325153375
       ```
 > [!NOTE]
-> Note that ssc ece = (ssc empty ece + ssc nonempty ece)/2 and ssc nll = (ssc empty nll + ssc nonempty nll)/2.
+> Note that **voxel ece = (ssc empty ece + ssc nonempty ece)/2** and **voxel nll = (ssc empty nll + ssc nonempty nll)/2**.
 > The inference time reported in the paper was measured on an A100 GPU. So it will be faster than on v100.
 
 ## 4.2. PaSCo w/ MIMO
