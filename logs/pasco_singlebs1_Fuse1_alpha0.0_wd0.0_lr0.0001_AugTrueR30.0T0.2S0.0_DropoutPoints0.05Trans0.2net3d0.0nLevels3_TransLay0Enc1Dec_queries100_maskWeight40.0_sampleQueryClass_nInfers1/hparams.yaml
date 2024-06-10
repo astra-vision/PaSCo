@@ -1,0 +1,160 @@
+alpha: 0.0
+aux_loss: false
+class_frequencies:
+  '1_1': !!python/object/apply:numpy.core.multiarray._reconstruct
+    args:
+    - &id001 !!python/name:numpy.ndarray ''
+    - !!python/tuple
+      - 0
+    - !!binary |
+      Yg==
+    state: !!python/tuple
+    - 1
+    - !!python/tuple
+      - 20
+    - &id002 !!python/object/apply:numpy.dtype
+      args:
+      - f8
+      - false
+      - true
+      state: !!python/tuple
+      - 3
+      - <
+      - null
+      - null
+      - null
+      - -1
+      - -1
+      - 0
+    - false
+    - !!binary |
+      AAAA9GQz9EEAAAAAuNRtQQAAAADAlvxAAAAAAGAA/UAAAAAAOGUiQQAAAADogClBAAAAABBJEEEA
+      AAAA8DYQQQAAAABwFwRBAAAAQP0njUEAAAAADjxQQQAAAMC8BIVBAAAAAPQlQ0EAAABAdSCLQQAA
+      AACQsW1BAAAAAKLwokEAAAAA2Gc/QQAAAABwq4FBAAAAAFy/MUEAAAAA8LkUQQ==
+  '1_2': !!python/object/apply:numpy.core.multiarray._reconstruct
+    args:
+    - *id001
+    - !!python/tuple
+      - 0
+    - !!binary |
+      Yg==
+    state: !!python/tuple
+    - 1
+    - !!python/tuple
+      - 20
+    - *id002
+    - false
+    - !!binary |
+      AAAA4KxDq0EAAAAALlVNQQAAAAAA0NpAAAAAAED72kAAAAAAwFIAQQAAAADw2AhBAAAAACCz7UAA
+      AAAAoI3vQAAAAAAgE+ZAAAAAAP94aUEAAAAAkI8sQQAAAADlTWNBAAAAALCvI0EAAAAA8gBsQQAA
+      AAAeJ0pBAAAAwPvNgUEAAAAASE4eQQAAAADX+V9BAAAAAKCDE0EAAAAAENX2QA==
+  '1_4': !!python/object/apply:numpy.core.multiarray._reconstruct
+    args:
+    - *id001
+    - !!python/tuple
+      - 0
+    - !!binary |
+      Yg==
+    state: !!python/tuple
+    - 1
+    - !!python/tuple
+      - 20
+    - *id002
+    - false
+    - !!binary |
+      AAAAgBkgdEEAAAAA+PcpQQAAAAAAkbVAAAAAAAC3uEAAAAAAQADcQAAAAABALOZAAAAAAIB2y0AA
+      AAAAgGPLQAAAAACAs8RAAAAAAKJhRUEAAAAAwL0IQQAAAACkBEFBAAAAAICKA0EAAAAAeM5NQQAA
+      AAB8CCdBAAAAAFlVYEEAAAAAILL+QAAAAAAwXT1BAAAAAMDG90AAAAAAgOzdQA==
+class_names:
+- empty
+- car
+- bicycle
+- motorcycle
+- truck
+- other-vehicle
+- person
+- bicyclist
+- motorcyclist
+- road
+- parking
+- sidewalk
+- other-ground
+- building
+- fence
+- vegetation
+- trunk
+- terrain
+- pole
+- traffic-sign
+class_weights:
+- !!python/object/apply:torch._utils._rebuild_tensor_v2
+  - !!python/object/apply:torch.storage._load_from_bytes
+    - !!binary |
+      gAKKCmz8nEb5IGqoUBkugAJN6QMugAJ9cQAoWBAAAABwcm90b2NvbF92ZXJzaW9ucQFN6QNYDQAA
+      AGxpdHRsZV9lbmRpYW5xAohYCgAAAHR5cGVfc2l6ZXNxA31xBChYBQAAAHNob3J0cQVLAlgDAAAA
+      aW50cQZLBFgEAAAAbG9uZ3EHSwR1dS6AAihYBwAAAHN0b3JhZ2VxAGN0b3JjaApGbG9hdFN0b3Jh
+      Z2UKcQFYDgAAADkzOTEzMDA3MDc0MjI0cQJYAwAAAGNwdXEDSxVOdHEEUS6AAl1xAFgOAAAAOTM5
+      MTMwMDcwNzQyMjRxAWEuFQAAAAAAAADNzMw9AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAA
+      gD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAP83MzD0=
+  - 0
+  - !!python/tuple
+    - 21
+  - !!python/tuple
+    - 1
+  - false
+  - !!python/object/apply:collections.OrderedDict
+    - []
+compl_labelweights: !!python/object/apply:torch._utils._rebuild_tensor_v2
+- !!python/object/apply:torch.storage._load_from_bytes
+  - !!binary |
+    gAKKCmz8nEb5IGqoUBkugAJN6QMugAJ9cQAoWBAAAABwcm90b2NvbF92ZXJzaW9ucQFN6QNYDQAA
+    AGxpdHRsZV9lbmRpYW5xAohYCgAAAHR5cGVfc2l6ZXNxA31xBChYBQAAAHNob3J0cQVLAlgDAAAA
+    aW50cQZLBFgEAAAAbG9uZ3EHSwR1dS6AAihYBwAAAHN0b3JhZ2VxAGN0b3JjaApGbG9hdFN0b3Jh
+    Z2UKcQFYDgAAADkzOTEzMDA3MDk5NjMycQJYAwAAAGNwdXEDSxROdHEEUS6AAl1xAFgOAAAAOTM5
+    MTMwMDcwOTk2MzJxAWEuFAAAAAAAAAAAAIA/Nc7gQPejD0LA9A5CyGGmQb02lUEAUdpBO6LaQUM7
+    AELks45AXHUtQZUmn0AM2E5BFi2SQMom4UBymU9Ay/tcQRmhqEAupYVBiHTJQQ==
+- 0
+- !!python/tuple
+  - 20
+- !!python/tuple
+  - 1
+- false
+- !!python/object/apply:collections.OrderedDict
+  - []
+dec_layers: 1
+decoder_dropouts:
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+dense3d_dropout: 0.0
+enc_layers: 0
+encoder_dropouts:
+- 0.05
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+- 0.0
+f: 64
+heavy_decoder: true
+in_channels: 283
+iou_threshold: 0.2
+lr: 0.0001
+mask_weight: 40.0
+n_classes: 20
+n_infer_mcmc: 1
+n_infers: 1
+no_object_weight: 0.1
+num_queries: 100
+object_mask_threshold: 0.7
+occ_weight: 1.0
+overlap_threshold: 0.4
+query_sample_ratio: 1.0
+sample_query_class: true
+scale: 1
+transformer_dropout: 0.2
+use_se_layer: false
+use_voxel_query_loss: true
+weight_decay: 0.0

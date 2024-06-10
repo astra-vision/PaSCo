@@ -24,3 +24,5 @@ venv/
 
 # MacOS system files
 .DS_Store
+
+ckpt/*

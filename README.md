@@ -39,6 +39,7 @@ If you find this work or code useful, please cite our [paper](https://arxiv.org/
 - [1. Installation](#1-installation)
 - [2. Data](#2-data)
 - [3. Panoptic labels generation](#3-panoptic-label-generation)
+- [4. Training and evaluation](#4-training-and-evaluation)
 
 
 # News
@@ -108,6 +109,70 @@ Please download the following data into a folder e.g. **/gpfsdswork/dataset/Sema
 
 
 ## 2.2. KITTI-360
+
+# 4. Training and evaluation
+## 4.1. Training PaSCo w/o MIMO
+> [!NOTE]
+> The generated instance label is assumed to be stored in os.path.join(preprocess_root, "instance_labels_v2")
+
+1. Run the following command to train PaSCo w/o MIMO with batchsize of 2 on 2 V100-32G GPUs (1 item per GPU):
+
+      ```
+      cd PaSCo/
+      python scripts/train.py --bs=2 --n_gpus=2 \
+            --dataset_preprocess_root=/gpfsscratch/rech/kvd/uyl37fq/pasco_preprocess/kitti \
+            --dataset_root=/gpfsdswork/dataset/SemanticKITTI \
+            --log_dir=logs \
+            --exp_prefix=pasco_single --lr=1e-4 --seed=0 \
+            --data_aug=True --max_angle=30.0 --translate_distance=0.2 \
+            --enable_log=True \
+            --sample_query_class=True --n_infers=1
+    
+      ```
+      
+
+## 4.2. Evaluate PaSCo w/o MIMO
+1. Download the pretrained checkpoint at [here]() and put it into `ckpt` folder.
+2. Run the following command to evaluate PaSCo w/o MIMO on 1 V100-32G GPUs (1 item per GPU). CHECKPOINT_PATH is the path to the downloaded checkpoint:
+      ```
+      python scripts/eval.py --n_infers=1 --model_path=ckpt/pasco_single.ckpt
+      ```
+
+      
+
+3. Output looks like following:
+      ```
+      =====================================
+      method, P, R, IoU, mIoU, All PQ dagger, All PQ, All SQ, All RQ, Thing PQ, Thing SQ, Thing RQ, Stuff PQ, Stuff SQ, Stuff RQ
+      subnet 0, 86.41, 57.98, 53.13, 29.15, 26.33, 15.71, 53.82, 24.27, 12.27, 47.18, 18.86, 18.21, 58.65, 28.20
+      ensemble, 86.41, 57.98, 53.13, 29.15, 26.33, 15.71, 53.82, 24.27, 12.27, 47.18, 18.86, 18.21, 58.65, 28.20
+      =====================================
+      ==> pq
+      method, car, bicycle, motorcycle, truck, other-vehicle, person, bicyclist, motorcyclist, road, parking, sidewalk, other-ground, building, fence, vegetation, trunk, terrain, pole, traffic-sign
+      subnet 0, 27.53, 6.21, 16.86, 34.27, 9.77, 3.53, 0.00, 0.00, 74.51, 26.63, 39.70, 0.54, 4.10, 4.64, 6.87, 3.80, 29.58, 7.68, 2.28
+      ensemble, 27.53, 6.21, 16.86, 34.27, 9.77, 3.53, 0.00, 0.00, 74.51, 26.63, 39.70, 0.54, 4.10, 4.64, 6.87, 3.80, 29.58, 7.68, 2.28
+      ==> sq
+      method, car, bicycle, motorcycle, truck, other-vehicle, person, bicyclist, motorcyclist, road, parking, sidewalk, other-ground, building, fence, vegetation, trunk, terrain, pole, traffic-sign
+      subnet 0, 69.83, 57.87, 64.56, 65.42, 59.95, 59.80, 0.00, 0.00, 75.74, 63.11, 58.65, 52.57, 56.08, 55.89, 52.51, 58.07, 62.12, 55.01, 55.42
+      ensemble, 69.83, 57.87, 64.56, 65.42, 59.95, 59.80, 0.00, 0.00, 75.74, 63.11, 58.65, 52.57, 56.08, 55.89, 52.51, 58.07, 62.12, 55.01, 55.42
+      ==> rq
+      method, car, bicycle, motorcycle, truck, other-vehicle, person, bicyclist, motorcyclist, road, parking, sidewalk, other-ground, building, fence, vegetation, trunk, terrain, pole, traffic-sign
+      subnet 0, 39.43, 10.73, 26.11, 52.38, 16.29, 5.91, 0.00, 0.00, 98.38, 42.19, 67.69, 1.04, 7.31, 8.31, 13.07, 6.54, 47.61, 13.96, 4.11
+      ensemble, 39.43, 10.73, 26.11, 52.38, 16.29, 5.91, 0.00, 0.00, 98.38, 42.19, 67.69, 1.04, 7.31, 8.31, 13.07, 6.54, 47.61, 13.96, 4.11
+      [2.621915578842163, 0.8142204284667969, 0.8685343265533447, 0.7775185108184814, 0.9801337718963623, 0.6943247318267822]
+      inference time:  0.7034459143364459
+      [0.004038333892822266, 0.003854036331176758, 0.005398988723754883, 0.003660440444946289, 0.004451274871826172, 0.003663778305053711]
+      ensemble time:  0.004062994399293342
+      Uncertainty threshold:  0.5
+      =====================================
+      method, ins ece, ins nll, ssc nonempty ece, ssc empty ece, ssc nonempty nll, ssc empty nll,  count, inference time
+      subnet 0,  0.6235, 4.6463, 0.0911, 0.0357, 0.7075, 0.9657, 11702, 0.00
+      ensemble,  0.6235, 4.6463, 0.0911, 0.0357, 0.7075, 0.9657, 11702, 0.00
+      allocated 8895.119325153375
+      ```
+> [!NOTE]
+> Note that ssc ece = (ssc empty ece + ssc nonempty ece)/2 and ssc nll = (ssc empty nll + ssc nonempty nll)/2.
+> The inference time reported in the paper was measured on an A100 GPU. So it will be faster than on v100.
 
 
 

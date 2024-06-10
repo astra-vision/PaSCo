@@ -6,7 +6,7 @@ from torch.utils.data.dataloader import DataLoader
 from torch.utils.data import Dataset    
 import click    
 import pickle
-from uncertainty.data.kitti360.params import thing_ids
+from pasco.data.kitti360.params import thing_ids
 
 
 class DummyDataset(Dataset):
