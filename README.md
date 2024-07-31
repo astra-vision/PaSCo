@@ -116,7 +116,7 @@ Please download the following data:
 - The **SSCBench-KITTI360** `preprocess.sqf`  from [SSCBench-KITTI360 official github](https://github.com/ai4ce/SSCBench/tree/main/dataset/KITTI-360) and unsquash it into a folder e.g. **/gpfsdswork/dataset/SSCBench-KITTI-360**. I also uploaded the file `preprocess.sqf` [here as backup](https://huggingface.co/datasets/anhquancao/SSCBench-KITTI360/blob/main/preprocess.sqf).
 - The **KITTI-360** `Raw Velodyne Scans (119G)` from [KITTI-360 download page](https://www.cvlibs.net/datasets/kitti-360/download.php) and put into folder e.g. **/gpfsdswork/dataset/KITTI-360**.
 
-- The folder  **/gpfsdswork/dataset/KITTI-360** should have the following structure:
+- The folder  `/gpfsdswork/dataset/KITTI-360` should have the following structure:
    ```
    /gpfsdswork/dataset/KITTI-360
    └── data_3d_raw
@@ -130,7 +130,7 @@ Please download the following data:
        └── 2013_05_28_drive_0009_sync
    ```
 
-- The folder **/gpfsdswork/dataset/SSCBench-KITTI-360** should have the following structure:
+- The folder `/gpfsdswork/dataset/SSCBench-KITTI-360` should have the following structure:
    ```
    /gpfsdswork/dataset/SSCBench-KITTI-360/
    ├── labels                        
@@ -161,7 +161,7 @@ Please download the following data:
 
 # 3. Panoptic labels generation
 ## 3.1. Semantic KITTI
-1. Create a folder to store preprocess data for Semantic KITTI dataset e.g. **/gpfsscratch/rech/kvd/uyl37fq/pasco_preprocess/kitti** .
+1. Create a folder to store preprocess data for Semantic KITTI dataset e.g. `/gpfsscratch/rech/kvd/uyl37fq/pasco_preprocess/kitti` .
 2. Execute the command below to generate panoptic labels, or **move to the next step** to directly download the **pre-generated labels**:
       ```
       cd PaSCo/
@@ -208,7 +208,7 @@ Please download the following data:
    
 
 ## 3.2. SSCBench-KITTI360
-1. Create a folder to store preprocess data for SSCBench-KITTI360 dataset e.g. **/gpfsscratch/rech/kvd/uyl37fq/pasco_preprocess/kitti360** .
+1. Create a folder to store preprocess data for SSCBench-KITTI360 dataset e.g. `/gpfsscratch/rech/kvd/uyl37fq/pasco_preprocess/kitti360` .
 2. Execute the command below to generate panoptic labels (took approximately 8.5 hours to process 12464 scans using 10 processes), or **move to the next step** to directly download the **pre-generated labels**:
       ```
       cd PaSCo/
@@ -302,7 +302,7 @@ Please download the following data:
       ```
 ### 4.1.2 Training
 > [!NOTE]
-> The generated instance label is supposed to be stored in os.path.join(dataset_preprocess_root, "instance_labels_v2")
+> The generated instance label is supposed to be stored in `os.path.join(dataset_preprocess_root, "instance_labels_v2")`
 
 1. Change the `dataset_preprocess_root` and `dataset_root` of the training command below to the preprocess and raw data folder respectively.
 2. The `log_dir` is the folder to store the training logs and checkpoints.
@@ -320,7 +320,7 @@ Please download the following data:
             --n_infers=1
       ```
 
-4. **Train PaSCo (3 subnets)**  by setting **--n_infers=3 (number of subnets = 3)** with batchsize of 2 on 2 A100-80G GPUs (1 items per GPU):
+4. **Train PaSCo (3 subnets)**  by setting `--n_infers=3` (number of subnets = 3) with batchsize of 2 on 2 A100-80G GPUs (1 items per GPU):
       ```
       cd PaSCo/
       python scripts/train.py --bs=2 --n_gpus=2 \
@@ -437,7 +437,7 @@ Please download the following data:
 ## 4.2. SSCBench-KITTI360
 ### 4.2.1 Training
 > [!NOTE]
-> The generated instance label is supposed to be stored in os.path.join(dataset_preprocess_root, "instance_labels_v2")
+> The generated instance label is supposed to be stored in `os.path.join(dataset_preprocess_root, "instance_labels_v2")` .
 
 1. Change the `kitti360_root`, `kitti360_label_root` and `kitti360_preprocess_root` of the training command below to your data folders respectively.
 2. The `log_dir` is the folder to store the training logs and checkpoints.
@@ -458,7 +458,7 @@ Please download the following data:
 
       ```
 
-4. **Train PaSCo (2 subnets)**  by setting **--n_infers=2 (number of subnets = 2)** with batchsize of 2 on 2 A100-80G GPUs (1 items per GPU):
+4. **Train PaSCo (2 subnets)**  by setting `--n_infers=2` (number of subnets = 2) with batchsize of 2 on 2 A100-80G GPUs (1 items per GPU):
       ```
       cd PaSCo/
       python scripts/train_kitti360.py --bs=2 --n_gpus=2 \
