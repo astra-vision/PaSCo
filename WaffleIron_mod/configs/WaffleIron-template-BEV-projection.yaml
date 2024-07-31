@@ -1,0 +1,51 @@
+waffleiron: # Architecture of the backbone
+  nb_channels: 256  # Define F = the feature size = width of the WaffleIron
+  depth: 48         # Define L = the depth on the network
+  fov_xyz:          # Define the FOV in meters
+    - - -50 # min value on x-axis: -50 m
+      - -50 # min value on y-axis: -50 m
+      - -5  # min value on z-axis: -5 m
+    - - 50  # max value on x-axis: 50 m
+      - 50  # max value on y-axis: 50 m
+      - 5   # max value on z-axis: 5 m
+  dim_proj:         # Define the sequence of projection (which is then repeated sequentially until \ell = L)
+    - 2  # Project along the z axis at \ell = 1
+  grids_size:       # Define here the size of the 2D grids
+    - [166, 166] # At \ell = 1, project along z, ie on (x, y) with FOV [-50, 50] on both axes: size [250, 250] -> resolution 60cm
+
+classif: # Architecture of the classifcation layer, after WaffleIron
+  nb_class: 16      # Number of classes on nuscenes (after removing the ignore class)
+
+embedding: # Architecture of the embedding layer, before WaffleIron
+  input_feat:       # List of features on each point
+    - "intensity"
+    - "height"
+    - "radius"
+  size_input: 3     # Input feature size on each point
+  neighbors: 16     # Neighborhood for embedding layer
+  voxel_size: 0.1   # Voxel size for downsampling point cloud in pre-processing
+
+dataloader:
+  batch_size: 4
+  num_workers: 12
+  max_points: 20000
+
+augmentations:
+  rotation_z: null
+  flip_xy: null
+  scale:
+    - [0, 1, 2]
+    - 0.1
+  instance_cutmix: False
+
+loss:
+  lovasz: 1.0
+
+optim:
+  lr: .001
+  weight_decay: 0.001
+
+scheduler:
+  min_lr: 0.00001
+  max_epoch: 45
+  epoch_warmup: 4
