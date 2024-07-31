@@ -96,15 +96,15 @@ If you find this work or code useful, please cite our [paper](https://arxiv.org/
 # 2. Data
 
 ## 2.1. Semantic KITTI
-Please download the following data into a folder e.g. **/gpfsdswork/dataset/SemanticKITTI** and unzip:
+Please download the following data into a folder e.g. `/gpfsdswork/dataset/SemanticKITTI` and unzip:
 
-- The **Semantic Scene Completion dataset v1.1** (SemanticKITTI voxel data (700 MB)) from [SemanticKITTI website](http://www.semantic-kitti.org/dataset.html#download)
+- The **Semantic Scene Completion dataset v1.1** (`SemanticKITTI voxel data (700 MB)`) from [SemanticKITTI website](http://www.semantic-kitti.org/dataset.html#download)
 
--  The [KITTI Odometry Benchmark](http://www.cvlibs.net/datasets/kitti/eval_odometry.php) calibration data (Download odometry data set **(calibration files, 1 MB)**). 
+-  The [KITTI Odometry Benchmark](http://www.cvlibs.net/datasets/kitti/eval_odometry.php) calibration data (Download odometry data set `(calibration files, 1 MB)`). 
 
-- The[ KITTI Odometry Benchmark](http://www.cvlibs.net/datasets/kitti/eval_odometry.php) Velodyne data (Download odometry data set  **(velodyne laser data, 80 GB)**).
+- The[ KITTI Odometry Benchmark](http://www.cvlibs.net/datasets/kitti/eval_odometry.php) Velodyne data (Download odometry data set  `(velodyne laser data, 80 GB)`).
 
-- The dataset folder at **/gpfsdswork/dataset/SemanticKITTI** should have the following structure:
+- The dataset folder at `/gpfsdswork/dataset/SemanticKITTI` should have the following structure:
     ```
     └── /gpfsdswork/dataset/SemanticKITTI
       └── dataset
@@ -113,8 +113,8 @@ Please download the following data into a folder e.g. **/gpfsdswork/dataset/Sema
 
 ## 2.2. SSCBench-KITTI360
 Please download the following data:
-- The **SSCBench-KITTI360** `preprocess.sqf`  from [SSCBench-KITTI360 official github](https://github.com/ai4ce/SSCBench/tree/main/dataset/KITTI-360) and unsquash it into a folder e.g. **/gpfsdswork/dataset/SSCBench-KITTI-360**. I also uploaded the file `preprocess.sqf` [here as backup](https://huggingface.co/datasets/anhquancao/SSCBench-KITTI360/blob/main/preprocess.sqf).
-- The **KITTI-360** `Raw Velodyne Scans (119G)` from [KITTI-360 download page](https://www.cvlibs.net/datasets/kitti-360/download.php) and put into folder e.g. **/gpfsdswork/dataset/KITTI-360**.
+- The **SSCBench-KITTI360** `preprocess.sqf`  from [SSCBench-KITTI360 official github](https://github.com/ai4ce/SSCBench/tree/main/dataset/KITTI-360) and unsquash it into a folder e.g. `/gpfsdswork/dataset/SSCBench-KITTI-360`. I also uploaded the file `preprocess.sqf` [here as backup](https://huggingface.co/datasets/anhquancao/SSCBench-KITTI360/blob/main/preprocess.sqf).
+- The **KITTI-360** `Raw Velodyne Scans (119G)` from [KITTI-360 download page](https://www.cvlibs.net/datasets/kitti-360/download.php) and put into folder e.g. `/gpfsdswork/dataset/KITTI-360`.
 
 - The folder  `/gpfsdswork/dataset/KITTI-360` should have the following structure:
    ```
