@@ -648,7 +648,7 @@ Please download the following data:
       ```
    
 > [!NOTE]
-> The Robo3D dataset contains 8 conditions and 3 levels. The conditions are `beam_missing`, `fog`, `cross_sensor`, `crosstalk`, `incomplete_echo`, `motion_blur`, `snow`, and `wet_ground`. The levels are categorized as `light`, `moderate`, and `heavy`. You can modify the condition and level parameters to evaluate the dataset under different settings.
+> The Robo3D dataset contains 8 conditions and 3 levels. The conditions are `beam_missing`, `fog`, `cross_sensor`, `crosstalk`, `incomplete_echo`, `motion_blur`, `snow`, and `wet_ground`. The levels are categorized as `light`, `moderate`, and `heavy`. You can modify the condition and level parameters to evaluate the model under different settings.
 
 
 # 5. Visualization
