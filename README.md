@@ -629,22 +629,26 @@ Please download the following data:
       wget https://github.com/astra-vision/PaSCo/releases/download/v0.1.0/pasco.ckpt
       wget https://github.com/astra-vision/PaSCo/releases/download/v0.1.0/pasco_single.ckpt
       ```
-2. Evaluate **PaSCo without MIMO** on 1 V100-32G GPUs (1 item per GPU). `ckpt/pasco_single.ckpt` is the path to the downloaded checkpoint on `condition=beam_missing` and `level=heavy`:
-> [!NOTE]
-> There are 8 conditions and 3 levels in the Robo3D dataset. The conditions are `beam_missing`, `fog`, `cross_sensor`, `crosstalk`, `incomplete_echo`, `motion_blur`, `snow`, and `wet_ground`. The levels are `light`, `medium`, and `heavy`.
+2. Evaluate **PaSCo without MIMO** on 1 V100-32G GPUs (1 item per GPU) on `condition=beam_missing` and `level=heavy`.  `ckpt/pasco_single.ckpt` is the path to the downloaded checkpoint:
+
       ```
       python scripts/eval_robo3d.py --n_infers=1 --model_path=ckpt/pasco_single.ckpt \
             --dataset_preprocess_root=/lustre/fsn1/projects/rech/kvd/uyl37fq/pasco_preprocess/kitti \
             --dataset_root=/gpfsdswork/dataset/SemanticKITTI \
             --condition=beam_missing --level=heavy
       ```
-3. Evaluate **PaSCo** on 1 V100-32G GPUs (1 item per GPU). `ckpt/pasco.ckpt` is the path to the downloaded checkpoint:
+
+
+4. Evaluate **PaSCo** on 1 V100-32G GPUs (1 item per GPU) on `condition=beam_missing` and `level=heavy`.  `ckpt/pasco.ckpt` is the path to the downloaded checkpoint:
       ```
       python scripts/eval_robo3d.py --n_infers=3 --model_path=ckpt/pasco.ckpt \
             --dataset_preprocess_root=/lustre/fsn1/projects/rech/kvd/uyl37fq/pasco_preprocess/kitti \
             --dataset_root=/gpfsdswork/dataset/SemanticKITTI \
             --condition=beam_missing --level=heavy
       ```
+   
+> [!NOTE]
+> There are 8 conditions and 3 levels in the Robo3D dataset. The conditions are `beam_missing`, `fog`, `cross_sensor`, `crosstalk`, `incomplete_echo`, `motion_blur`, `snow`, and `wet_ground`. The levels are `light`, `medium`, and `heavy`.
 
 
 # 5. Visualization
