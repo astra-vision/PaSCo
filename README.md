@@ -96,15 +96,15 @@ If you find this work or code useful, please cite our [paper](https://arxiv.org/
 # 2. Data
 
 ## 2.1. Semantic KITTI
-Please download the following data into a folder e.g. **/gpfsdswork/dataset/SemanticKITTI** and unzip:
+Please download the following data into a folder e.g. `/gpfsdswork/dataset/SemanticKITTI` and unzip:
 
-- The **Semantic Scene Completion dataset v1.1** (SemanticKITTI voxel data (700 MB)) from [SemanticKITTI website](http://www.semantic-kitti.org/dataset.html#download)
+- The **Semantic Scene Completion dataset v1.1** (`SemanticKITTI voxel data (700 MB)`) from [SemanticKITTI website](http://www.semantic-kitti.org/dataset.html#download)
 
--  The [KITTI Odometry Benchmark](http://www.cvlibs.net/datasets/kitti/eval_odometry.php) calibration data (Download odometry data set **(calibration files, 1 MB)**). 
+-  The [KITTI Odometry Benchmark](http://www.cvlibs.net/datasets/kitti/eval_odometry.php) calibration data (Download odometry data set `(calibration files, 1 MB)`). 
 
-- The[ KITTI Odometry Benchmark](http://www.cvlibs.net/datasets/kitti/eval_odometry.php) Velodyne data (Download odometry data set  **(velodyne laser data, 80 GB)**).
+- The[ KITTI Odometry Benchmark](http://www.cvlibs.net/datasets/kitti/eval_odometry.php) Velodyne data (Download odometry data set  `(velodyne laser data, 80 GB)`).
 
-- The dataset folder at **/gpfsdswork/dataset/SemanticKITTI** should have the following structure:
+- The dataset folder at `/gpfsdswork/dataset/SemanticKITTI` should have the following structure:
     ```
     └── /gpfsdswork/dataset/SemanticKITTI
       └── dataset
@@ -113,10 +113,10 @@ Please download the following data into a folder e.g. **/gpfsdswork/dataset/Sema
 
 ## 2.2. SSCBench-KITTI360
 Please download the following data:
-- The **SSCBench-KITTI360** dataset from [SSCBench-KITTI360 official github](https://github.com/ai4ce/SSCBench/tree/main/dataset/KITTI-360) and put into a folder e.g. **/gpfsdswork/dataset/SSCBench-KITTI-360**.
-- The **KITTI-360 Raw Velodyne Scans (119G)** from [KITTI-360 download page](https://www.cvlibs.net/datasets/kitti-360/download.php) and put into folder e.g. **/gpfsdswork/dataset/KITTI-360**.
+- The **SSCBench-KITTI360** `preprocess.sqf`  from [SSCBench-KITTI360 official github](https://github.com/ai4ce/SSCBench/tree/main/dataset/KITTI-360) and unsquash it into a folder e.g. `/gpfsdswork/dataset/SSCBench-KITTI-360`. I also uploaded the file `preprocess.sqf` [here as backup](https://huggingface.co/datasets/anhquancao/SSCBench-KITTI360/blob/main/preprocess.sqf).
+- The **KITTI-360** `Raw Velodyne Scans (119G)` from [KITTI-360 download page](https://www.cvlibs.net/datasets/kitti-360/download.php) and put into folder e.g. `/gpfsdswork/dataset/KITTI-360`.
 
-- The folder  **/gpfsdswork/dataset/KITTI-360** should have the following structure:
+- The folder  `/gpfsdswork/dataset/KITTI-360` should have the following structure:
    ```
    /gpfsdswork/dataset/KITTI-360
    └── data_3d_raw
@@ -130,7 +130,7 @@ Please download the following data:
        └── 2013_05_28_drive_0009_sync
    ```
 
-- The folder **/gpfsdswork/dataset/SSCBench-KITTI-360** should have the following structure:
+- The folder `/gpfsdswork/dataset/SSCBench-KITTI-360` should have the following structure:
    ```
    /gpfsdswork/dataset/SSCBench-KITTI-360/
    ├── labels                        
@@ -157,6 +157,9 @@ Please download the following data:
    └── unified                         
    └── labels
    ```
+### 2.3. Robo3D
+Please download the SemanticKITTI-C following the [official instruction](https://github.com/ldkong1205/Robo3D/blob/main/docs/DATA_PREPARE.md#semantickitti-c) and put in a folder e.g. `/gpfsdswork/dataset/SemanticKITTI-C`
+WIP
  
 
 # 3. Panoptic labels generation
@@ -303,7 +306,7 @@ Please download the following data:
       ```
 ### 4.1.2 Training
 > [!NOTE]
-> The generated instance label is supposed to be stored in os.path.join(dataset_preprocess_root, "instance_labels_v2")
+> The generated instance label is supposed to be stored in `os.path.join(dataset_preprocess_root, "instance_labels_v2")`
 
 1. Change the `dataset_preprocess_root` and `dataset_root` of the training command below to the preprocess and raw data folder respectively.
 2. The `log_dir` is the folder to store the training logs and checkpoints.
@@ -321,7 +324,7 @@ Please download the following data:
             --n_infers=1
       ```
 
-4. **Train PaSCo (3 subnets)**  by setting **--n_infers=3 (number of subnets = 3)** with batchsize of 2 on 2 A100-80G GPUs (1 items per GPU):
+4. **Train PaSCo (3 subnets)**  by setting `--n_infers=3` (number of subnets = 3) with batchsize of 2 on 2 A100-80G GPUs (1 items per GPU):
       ```
       cd PaSCo/
       python scripts/train.py --bs=2 --n_gpus=2 \
@@ -438,7 +441,7 @@ Please download the following data:
 ## 4.2. SSCBench-KITTI360
 ### 4.2.1 Training
 > [!NOTE]
-> The generated instance label is supposed to be stored in os.path.join(dataset_preprocess_root, "instance_labels_v2")
+> The generated instance label is supposed to be stored in `os.path.join(dataset_preprocess_root, "instance_labels_v2")` .
 
 1. Change the `kitti360_root`, `kitti360_label_root` and `kitti360_preprocess_root` of the training command below to your data folders respectively.
 2. The `log_dir` is the folder to store the training logs and checkpoints.
@@ -459,7 +462,7 @@ Please download the following data:
 
       ```
 
-4. **Train PaSCo (2 subnets)**  by setting **--n_infers=2 (number of subnets = 2)** with batchsize of 2 on 2 A100-80G GPUs (1 items per GPU):
+4. **Train PaSCo (2 subnets)**  by setting `--n_infers=2` (number of subnets = 2) with batchsize of 2 on 2 A100-80G GPUs (1 items per GPU):
       ```
       cd PaSCo/
       python scripts/train_kitti360.py --bs=2 --n_gpus=2 \
