@@ -669,6 +669,7 @@ Please download the following data:
 # Acknowledgment
 We thank the authors of the following repositories for making their code and models publicly available:
 - https://github.com/valeoai/WaffleIron
+- https://github.com/NVIDIA/MinkowskiEngine
 - https://github.com/PRBonn/MaskPLS
 - https://github.com/SCPNet/Codes-for-SCPNet
 - https://github.com/astra-vision/LMSCNet
