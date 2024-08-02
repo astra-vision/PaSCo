@@ -631,7 +631,7 @@ Please download the following data:
       ```
 2. Evaluate **PaSCo without MIMO** on 1 V100-32G GPUs (1 item per GPU). `ckpt/pasco_single.ckpt` is the path to the downloaded checkpoint on `condition=beam_missing` and `level=heavy`:
 > [!NOTE]
-> There are 8 conditions and 3 levels in the Robo3D dataset. The condition can be `beam_missing`, `fog`, `cross_sensor`, `crosstalk`, `incomplete_echo`, `motion_blur`, `snow`, `wet_ground`. The level can be `light`, `medium`, `heavy`.
+> There are 8 conditions and 3 levels in the Robo3D dataset. The conditions are `beam_missing`, `fog`, `cross_sensor`, `crosstalk`, `incomplete_echo`, `motion_blur`, `snow`, and `wet_ground`. The levels are `light`, `medium`, and `heavy`.
       ```
       python scripts/eval_robo3d.py --n_infers=1 --model_path=ckpt/pasco_single.ckpt \
             --dataset_preprocess_root=/lustre/fsn1/projects/rech/kvd/uyl37fq/pasco_preprocess/kitti \
