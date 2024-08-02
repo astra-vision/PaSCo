@@ -89,8 +89,11 @@ If you find this work or code useful, please cite our [paper](https://arxiv.org/
 4. Install [Minkowski Engine v0.5.4](https://github.com/NVIDIA/MinkowskiEngine?tab=readme-ov-file#pip)
 
 5. Install pytorch_lightning 1.9.0 with torchmetrics 1.4.0.post0
+    ```
+    pip install --no-cache-dir pytorch_lightning==1.9.0
+    ```
    
-6. Install the additional dependencies:
+7. Install the additional dependencies:
       ```
       cd PaSCo/
       pip install -r requirements.txt
@@ -100,7 +103,7 @@ If you find this work or code useful, please cite our [paper](https://arxiv.org/
       pip install torch-scatter -f https://data.pyg.org/whl/torch-1.13.0+cu117.html
       ```
 
-7. Install PaSCo
+8. Install PaSCo
       ```
       pip install -e ./
       ```
