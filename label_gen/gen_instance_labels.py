@@ -135,7 +135,7 @@ class DummyDataset(Dataset):
 @click.command()
 @click.option('--kitti_config', default="/gpfswork/rech/kvd/uyl37fq/code/uncertainty/uncertainty/data/semantic_kitti/semantic-kitti.yaml")
 @click.option('--kitti_root', default="/gpfsdswork/dataset/SemanticKITTI", help='Semantic kitti root')
-@click.option('--kitti_preprocess_root', default="/gpfsscratch/rech/kvd/uyl37fq/monoscene_preprocess/kitti", help='Semantic kitti root')
+@click.option('--kitti_preprocess_root', default="/lustre/fsn1/projects/rech/kvd/uyl37fq/monoscene_preprocess/kitti", help='Semantic kitti root')
 @click.option('--n_process', default=10, help='number of parallel processes')
 def main(kitti_config, kitti_root, kitti_preprocess_root, n_process):
     dataset = DummyDataset(

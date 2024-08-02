@@ -730,7 +730,7 @@ class KittiDataset(Dataset):
 if __name__ == "__main__":
     kitti_config = "/gpfswork/rech/kvd/uyl37fq/code/uncertainty/uncertainty/data/semantic_kitti/semantic-kitti.yaml"
     kitti_root = "/gpfsdswork/dataset/SemanticKITTI"
-    kitti_preprocess_root = "/gpfsscratch/rech/kvd/uyl37fq/monoscene_preprocess/kitti"
+    kitti_preprocess_root = "/lustre/fsn1/projects/rech/kvd/uyl37fq/monoscene_preprocess/kitti"
 
     dataset = KittiDataset(
         "val",

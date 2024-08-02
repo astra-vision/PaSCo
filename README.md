@@ -161,14 +161,14 @@ Please download the following data:
 
 # 3. Panoptic labels generation
 ## 3.1. Semantic KITTI
-1. Create a folder to store preprocess data for Semantic KITTI dataset e.g. **/gpfsscratch/rech/kvd/uyl37fq/pasco_preprocess/kitti** .
+1. Create a folder to store preprocess data for Semantic KITTI dataset e.g. **/lustre/fsn1/projects/rech/kvd/uyl37fq/pasco_preprocess/kitti** .
 2. Execute the command below to generate panoptic labels, or **move to the next step** to directly download the **pre-generated labels**:
       ```
       cd PaSCo/
       python label_gen/gen_instance_labels.py \
           --kitti_config=pasco/data/semantic_kitti/semantic-kitti.yaml \
           --kitti_root=/gpfsdswork/dataset/SemanticKITTI \
-          --kitti_preprocess_root=/gpfsscratch/rech/kvd/uyl37fq/pasco_preprocess/kitti \
+          --kitti_preprocess_root=/lustre/fsn1/projects/rech/kvd/uyl37fq/pasco_preprocess/kitti \
           --n_process=10
       ```
 
@@ -179,7 +179,7 @@ Please download the following data:
 3. You can download the generated panoptic labels for Semantic KITTI:
    1. Go to the preprocess folder for KITTI:
       ```
-      cd /gpfsscratch/rech/kvd/uyl37fq/pasco_preprocess/kitti
+      cd /lustre/fsn1/projects/rech/kvd/uyl37fq/pasco_preprocess/kitti
       ```
    2. Download the compressed file:
       ```
@@ -191,7 +191,7 @@ Please download the following data:
       ```
 4. Your folder structure should look as follows:
       ```
-      /gpfsscratch/rech/kvd/uyl37fq/pasco_preprocess/kitti
+      /lustre/fsn1/projects/rech/kvd/uyl37fq/pasco_preprocess/kitti
       └── instance_labels_v2
           ├── 00
           ├── 01
@@ -208,19 +208,19 @@ Please download the following data:
    
 
 ## 3.2. SSCBench-KITTI360
-1. Create a folder to store preprocess data for SSCBench-KITTI360 dataset e.g. **/gpfsscratch/rech/kvd/uyl37fq/pasco_preprocess/kitti360** .
+1. Create a folder to store preprocess data for SSCBench-KITTI360 dataset e.g. **/lustre/fsn1/projects/rech/kvd/uyl37fq/pasco_preprocess/kitti360** .
 2. Execute the command below to generate panoptic labels (took approximately 8.5 hours to process 12464 scans using 10 processes), or **move to the next step** to directly download the **pre-generated labels**:
       ```
       cd PaSCo/
       python label_gen/gen_instance_labels_kitti360.py \
           --kitti360_label_root=/gpfsdswork/dataset/SSCBench-KITTI-360 \
-          --kitti360_preprocess_root=/gpfsscratch/rech/kvd/uyl37fq/pasco_preprocess/kitti360 \
+          --kitti360_preprocess_root=/lustre/fsn1/projects/rech/kvd/uyl37fq/pasco_preprocess/kitti360 \
           --n_process=10
       ```
 3. You can download the generated panoptic labels for SSCBench-KITTI360:
    1. Go to the preprocess folder for KITTI360:
       ```
-      cd /gpfsscratch/rech/kvd/uyl37fq/pasco_preprocess/kitti360
+      cd /lustre/fsn1/projects/rech/kvd/uyl37fq/pasco_preprocess/kitti360
       ```
    2. Create a folder to store the instance label and cd into it:
       ```
@@ -245,7 +245,7 @@ Please download the following data:
       ```
 4. Your folder structure with the instance labels should look as follows:
       ```
-      /gpfsscratch/rech/kvd/uyl37fq/pasco_preprocess/kitti360
+      /lustre/fsn1/projects/rech/kvd/uyl37fq/pasco_preprocess/kitti360
       └── instance_labels_v2
           ├── 2013_05_28_drive_0000_sync
           ├── 2013_05_28_drive_0002_sync
@@ -278,6 +278,7 @@ Please download the following data:
 1. Install WaffleIron in a separate conda environment:
       ```
       conda create -y -n waffleiron 
+      conda activate waffleiron
       pip install pyYAML==6.0 tqdm==4.63.0 scipy==1.8.0 torch==1.11.0 tensorboard==2.8.0
       cd PaSCo/WaffleIron_mod
       pip install -e ./
@@ -294,7 +295,7 @@ Please download the following data:
       --path_dataset /gpfsdswork/dataset/SemanticKITTI \
       --ckpt pretrained_models/WaffleIron-48-256__kitti/ckpt_last.pth \
       --config configs/WaffleIron-48-256__kitti.yaml \
-      --result_folder /gpfsscratch/rech/kvd/uyl37fq/pasco_preprocess/kitti/waffleiron_v2 \
+      --result_folder /lustre/fsn1/projects/rech/kvd/uyl37fq/pasco_preprocess/kitti/waffleiron_v2 \
       --phase val \
       --num_workers 3 \
       --num_votes 10 \
@@ -311,7 +312,7 @@ Please download the following data:
       ```
       cd PaSCo/
       python scripts/train.py --bs=2 --n_gpus=2 \
-            --dataset_preprocess_root=/gpfsscratch/rech/kvd/uyl37fq/pasco_preprocess/kitti \
+            --dataset_preprocess_root=/lustre/fsn1/projects/rech/kvd/uyl37fq/pasco_preprocess/kitti \
             --dataset_root=/gpfsdswork/dataset/SemanticKITTI \
             --log_dir=logs \
             --exp_prefix=pasco_single --lr=1e-4 --seed=0 \
@@ -324,7 +325,7 @@ Please download the following data:
       ```
       cd PaSCo/
       python scripts/train.py --bs=2 --n_gpus=2 \
-            --dataset_preprocess_root=/gpfsscratch/rech/kvd/uyl37fq/pasco_preprocess/kitti \
+            --dataset_preprocess_root=/lustre/fsn1/projects/rech/kvd/uyl37fq/pasco_preprocess/kitti \
             --dataset_root=/gpfsdswork/dataset/SemanticKITTI \
             --log_dir=logs \
             --exp_prefix=pasco_single --lr=1e-4 --seed=0 \
@@ -344,13 +345,13 @@ Please download the following data:
 2. Evaluate **PaSCo without MIMO** on 1 V100-32G GPUs (1 item per GPU). `ckpt/pasco_single.ckpt` is the path to the downloaded checkpoint:
       ```
       python scripts/eval.py --n_infers=1 --model_path=ckpt/pasco_single.ckpt \
-            --dataset_preprocess_root=/gpfsscratch/rech/kvd/uyl37fq/pasco_preprocess/kitti \
+            --dataset_preprocess_root=/lustre/fsn1/projects/rech/kvd/uyl37fq/pasco_preprocess/kitti \
             --dataset_root=/gpfsdswork/dataset/SemanticKITTI 
       ```
 3. Evaluate **PaSCo** on 1 V100-32G GPUs (1 item per GPU). `ckpt/pasco.ckpt` is the path to the downloaded checkpoint:
       ```
       python scripts/eval.py --n_infers=3 --model_path=ckpt/pasco.ckpt \
-            --dataset_preprocess_root=/gpfsscratch/rech/kvd/uyl37fq/pasco_preprocess/kitti \
+            --dataset_preprocess_root=/lustre/fsn1/projects/rech/kvd/uyl37fq/pasco_preprocess/kitti \
             --dataset_root=/gpfsdswork/dataset/SemanticKITTI 
       ```
 
@@ -449,7 +450,7 @@ Please download the following data:
             --exp_prefix=pasco_single_kitti360 --lr=1e-4 \
             --kitti360_root=/gpfsdswork/dataset/KITTI-360 \
             --kitti360_label_root=/gpfsdswork/dataset/SSCBench-KITTI-360 \
-            --kitti360_preprocess_root=/gpfsscratch/rech/kvd/uyl37fq/pasco_preprocess/kitti360 \
+            --kitti360_preprocess_root=/lustre/fsn1/projects/rech/kvd/uyl37fq/pasco_preprocess/kitti360 \
             --log_dir=logs \
             --transformer_dropout=0.2 --n_dropout_levels=3 \
             --data_aug=True --max_angle=10.0 --translate_distance=0.2 --scale_range=0.0 \
@@ -465,7 +466,7 @@ Please download the following data:
             --exp_prefix=pasco_kitti360 --lr=1e-4 \
             --kitti360_root=/gpfsdswork/dataset/KITTI-360 \
             --kitti360_label_root=/gpfsdswork/dataset/SSCBench-KITTI-360 \
-            --kitti360_preprocess_root=/gpfsscratch/rech/kvd/uyl37fq/pasco_preprocess/kitti360 \
+            --kitti360_preprocess_root=/lustre/fsn1/projects/rech/kvd/uyl37fq/pasco_preprocess/kitti360 \
             --log_dir=logs \
             --transformer_dropout=0.2 --n_dropout_levels=3 \
             --data_aug=True --max_angle=10.0 --translate_distance=0.2 --scale_range=0.0 \
@@ -482,7 +483,7 @@ Please download the following data:
 2. Evaluate **PaSCo without MIMO** on 1 V100-32G GPUs (1 item per GPU). `ckpt/pasco_single_kitti360.ckpt` is the path to the downloaded checkpoint:
       ```
       python scripts/eval_kitti360.py --n_infers=1 --model_path=ckpt/pasco_single_kitti360.ckpt \
-            --kitti360_preprocess_root=/gpfsscratch/rech/kvd/uyl37fq/pasco_preprocess/kitti360 \
+            --kitti360_preprocess_root=/lustre/fsn1/projects/rech/kvd/uyl37fq/pasco_preprocess/kitti360 \
             --kitti360_root=/gpfsdswork/dataset/KITTI-360 \
             --kitti360_label_root=/gpfsdswork/dataset/SSCBench-KITTI-360
       ```
@@ -491,7 +492,7 @@ Please download the following data:
 3. Evaluate **PaSCo** on 1 V100-32G GPUs (1 item per GPU). `ckpt/pasco_kitti360.ckpt` is the path to the downloaded checkpoint:
       ```
       python scripts/eval_kitti360.py --n_infers=2 --model_path=ckpt/pasco_kitti360.ckpt \
-            --kitti360_preprocess_root=/gpfsscratch/rech/kvd/uyl37fq/pasco_preprocess/kitti360 \
+            --kitti360_preprocess_root=/lustre/fsn1/projects/rech/kvd/uyl37fq/pasco_preprocess/kitti360 \
             --kitti360_root=/gpfsdswork/dataset/KITTI-360 \
             --kitti360_label_root=/gpfsdswork/dataset/SSCBench-KITTI-360
       ```
@@ -560,7 +561,129 @@ Please download the following data:
       ensemble,  0.5899, 3.8083, 0.1616, 0.1068, 1.1075, 2.1397, 18990, 0.00
       allocated 17902.39387990762
       ```
+## 4.3. Robo3D - SemanticKITTI-C
+### 4.3.1 Extract point features
 
+1. Install WaffleIron in a separate conda environment:
+      ```
+      conda create -y -n waffleiron 
+      conda activate waffleiron
+      pip install pyYAML==6.0 tqdm==4.63.0 scipy==1.8.0 torch==1.11.0 tensorboard==2.8.0
+      cd PaSCo/WaffleIron_mod
+      pip install -e ./
+      ```
+
+> [!CAUTION]
+> I used the older version of WaffleIron which requires pytorch 1.11.0.
+
+
+2. Run the following command to extract point features from the pretrained WaffleIron model (require 10883Mb GPU memory) pretrained on SemanticKITTI. The extracted features will be stored in the `result_folder`:
+> [!IMPORTANT]
+> `/gpfsdswork/dataset/SemanticKITTI-C` is the path to the SemanticKITTI-C dataset and `/lustre/fsn1/projects/rech/kvd/uyl37fq/pasco_preprocess/kitti` is the path to store the extracted features.
+
+      ```
+      cd PaSCo/WaffleIron_mod
+      python extract_point_features_robo3d.py \
+      --path_dataset /gpfsdswork/dataset/SemanticKITTI-C \
+      --ckpt pretrained_models/WaffleIron-48-256__kitti/ckpt_last.pth \
+      --config configs/WaffleIron-48-256__kitti.yaml \
+      --result_folder /lustre/fsn1/projects/rech/kvd/uyl37fq/pasco_preprocess/kitti/waffleiron_v2 \
+      --phase val \
+      --num_workers 3 \
+      --num_votes 10 \
+      --batch_size 2
+      ```
+
+
+## 4.3.2 Evaluation
+1. Download the **pretrained checkpoint of [PaSCO](https://github.com/astra-vision/PaSCo/releases/download/v0.1.0/pasco.ckpt) or [PaSCO without MIMO](https://github.com/astra-vision/PaSCo/releases/download/v0.1.0/pasco_single.ckpt)** and put it into `ckpt` folder or use your trained checkpoint.
+      ```
+      cd ckpt
+      wget https://github.com/astra-vision/PaSCo/releases/download/v0.1.0/pasco.ckpt
+      wget https://github.com/astra-vision/PaSCo/releases/download/v0.1.0/pasco_single.ckpt
+      ```
+2. Evaluate **PaSCo without MIMO** on 1 V100-32G GPUs (1 item per GPU). `ckpt/pasco_single.ckpt` is the path to the downloaded checkpoint:
+      ```
+      
+      ```
+3. Evaluate **PaSCo** on 1 V100-32G GPUs (1 item per GPU). `ckpt/pasco.ckpt` is the path to the downloaded checkpoint:
+      ```
+      
+      ```
+
+   
+
+4. Output looks like following: 
+      - **PaSCo without MIMO**:
+      ```
+      =====================================
+      method, P, R, IoU, mIoU, All PQ dagger, All PQ, All SQ, All RQ, Thing PQ, Thing SQ, Thing RQ, Stuff PQ, Stuff SQ, Stuff RQ
+      subnet 0, 86.41, 57.98, 53.13, 29.15, 26.33, 15.71, 53.82, 24.27, 12.27, 47.18, 18.86, 18.21, 58.65, 28.20
+      ensemble, 86.41, 57.98, 53.13, 29.15, 26.33, 15.71, 53.82, 24.27, 12.27, 47.18, 18.86, 18.21, 58.65, 28.20
+      =====================================
+      ==> pq
+      method, car, bicycle, motorcycle, truck, other-vehicle, person, bicyclist, motorcyclist, road, parking, sidewalk, other-ground, building, fence, vegetation, trunk, terrain, pole, traffic-sign
+      subnet 0, 27.53, 6.21, 16.86, 34.27, 9.77, 3.53, 0.00, 0.00, 74.51, 26.63, 39.70, 0.54, 4.10, 4.64, 6.87, 3.80, 29.58, 7.68, 2.28
+      ensemble, 27.53, 6.21, 16.86, 34.27, 9.77, 3.53, 0.00, 0.00, 74.51, 26.63, 39.70, 0.54, 4.10, 4.64, 6.87, 3.80, 29.58, 7.68, 2.28
+      ==> sq
+      method, car, bicycle, motorcycle, truck, other-vehicle, person, bicyclist, motorcyclist, road, parking, sidewalk, other-ground, building, fence, vegetation, trunk, terrain, pole, traffic-sign
+      subnet 0, 69.83, 57.87, 64.56, 65.42, 59.95, 59.80, 0.00, 0.00, 75.74, 63.11, 58.65, 52.57, 56.08, 55.89, 52.51, 58.07, 62.12, 55.01, 55.42
+      ensemble, 69.83, 57.87, 64.56, 65.42, 59.95, 59.80, 0.00, 0.00, 75.74, 63.11, 58.65, 52.57, 56.08, 55.89, 52.51, 58.07, 62.12, 55.01, 55.42
+      ==> rq
+      method, car, bicycle, motorcycle, truck, other-vehicle, person, bicyclist, motorcyclist, road, parking, sidewalk, other-ground, building, fence, vegetation, trunk, terrain, pole, traffic-sign
+      subnet 0, 39.43, 10.73, 26.11, 52.38, 16.29, 5.91, 0.00, 0.00, 98.38, 42.19, 67.69, 1.04, 7.31, 8.31, 13.07, 6.54, 47.61, 13.96, 4.11
+      ensemble, 39.43, 10.73, 26.11, 52.38, 16.29, 5.91, 0.00, 0.00, 98.38, 42.19, 67.69, 1.04, 7.31, 8.31, 13.07, 6.54, 47.61, 13.96, 4.11
+      [2.621915578842163, 0.8142204284667969, 0.8685343265533447, 0.7775185108184814, 0.9801337718963623, 0.6943247318267822]
+      inference time:  0.7034459143364459
+      [0.004038333892822266, 0.003854036331176758, 0.005398988723754883, 0.003660440444946289, 0.004451274871826172, 0.003663778305053711]
+      ensemble time:  0.004062994399293342
+      Uncertainty threshold:  0.5
+      =====================================
+      method, ins ece, ins nll, ssc nonempty ece, ssc empty ece, ssc nonempty nll, ssc empty nll,  count, inference time
+      subnet 0,  0.6235, 4.6463, 0.0911, 0.0357, 0.7075, 0.9657, 11702, 0.00
+      ensemble,  0.6235, 4.6463, 0.0911, 0.0357, 0.7075, 0.9657, 11702, 0.00
+      allocated 8895.119325153375
+      ```
+      - **PaSCo**:
+      ```
+      =====================================
+      method, P, R, IoU, mIoU, All PQ dagger, All PQ, All SQ, All RQ, Thing PQ, Thing SQ, Thing RQ, Stuff PQ, Stuff SQ, Stuff RQ
+      subnet 0, 77.41, 65.46, 54.96, 27.55, 25.17, 14.67, 56.88, 23.18, 10.80, 52.60, 17.42, 17.49, 59.99, 27.38
+      subnet 1, 79.38, 63.54, 54.54, 27.36, 25.56, 14.51, 53.75, 22.78, 10.80, 46.09, 17.11, 17.20, 59.33, 26.90
+      subnet 2, 75.10, 67.29, 55.01, 27.79, 25.54, 14.98, 53.23, 23.51, 11.74, 53.30, 18.49, 17.33, 53.18, 27.17
+      ensemble, 83.59, 62.10, 55.35, 29.54, 30.61, 16.38, 55.41, 25.24, 13.49, 47.20, 20.93, 18.49, 61.38, 28.37
+      =====================================
+      ==> pq
+      method, car, bicycle, motorcycle, truck, other-vehicle, person, bicyclist, motorcyclist, road, parking, sidewalk, other-ground, building, fence, vegetation, trunk, terrain, pole, traffic-sign
+      subnet 0, 25.31, 7.34, 14.46, 28.97, 7.78, 2.27, 0.24, 0.00, 73.71, 21.03, 35.21, 0.78, 6.46, 4.35, 10.70, 2.65, 29.88, 6.09, 1.55
+      subnet 1, 23.68, 4.74, 9.70, 37.66, 7.98, 2.62, 0.00, 0.00, 73.47, 18.59, 35.12, 0.68, 6.72, 3.65, 10.17, 3.25, 29.53, 5.67, 2.38
+      subnet 2, 24.04, 7.17, 16.35, 36.08, 8.14, 1.92, 0.24, 0.00, 73.99, 22.03, 34.39, 0.00, 6.30, 2.59, 10.16, 3.24, 29.58, 5.95, 2.39
+      ensemble, 27.44, 8.70, 16.79, 42.71, 9.55, 2.70, 0.00, 0.00, 75.65, 25.51, 36.83, 0.90, 6.27, 0.32, 11.13, 4.31, 31.61, 8.15, 2.70
+      ==> sq
+      method, car, bicycle, motorcycle, truck, other-vehicle, person, bicyclist, motorcyclist, road, parking, sidewalk, other-ground, building, fence, vegetation, trunk, terrain, pole, traffic-sign
+      subnet 0, 66.64, 58.42, 62.35, 60.01, 59.58, 59.09, 54.75, 0.00, 75.02, 62.31, 57.57, 69.60, 55.13, 55.76, 52.73, 59.12, 61.43, 54.35, 56.92
+      subnet 1, 66.31, 58.21, 63.06, 63.01, 59.65, 58.46, 0.00, 0.00, 74.97, 62.37, 57.99, 66.12, 55.11, 55.67, 52.16, 57.16, 61.72, 54.83, 54.52
+      subnet 2, 66.35, 58.97, 65.16, 63.13, 60.61, 56.54, 55.67, 0.00, 75.26, 61.39, 57.35, 0.00, 54.78, 55.43, 52.69, 57.71, 61.29, 54.21, 54.87
+      ensemble, 69.20, 59.77, 65.81, 63.30, 61.22, 58.33, 0.00, 0.00, 76.99, 63.37, 59.20, 72.50, 56.39, 62.66, 52.83, 57.40, 62.94, 54.98, 55.88
+      ==> rq
+      method, car, bicycle, motorcycle, truck, other-vehicle, person, bicyclist, motorcyclist, road, parking, sidewalk, other-ground, building, fence, vegetation, trunk, terrain, pole, traffic-sign
+      subnet 0, 37.97, 12.56, 23.19, 48.28, 13.06, 3.85, 0.44, 0.00, 98.25, 33.74, 61.16, 1.12, 11.72, 7.81, 20.29, 4.48, 48.63, 11.21, 2.73
+      subnet 1, 35.71, 8.14, 15.38, 59.77, 13.38, 4.49, 0.00, 0.00, 98.00, 29.81, 60.56, 1.03, 12.20, 6.55, 19.49, 5.69, 47.85, 10.33, 4.36
+      subnet 2, 36.23, 12.16, 25.10, 57.14, 13.43, 3.40, 0.44, 0.00, 98.32, 35.88, 59.97, 0.00, 11.49, 4.67, 19.29, 5.61, 48.26, 10.97, 4.35
+      ensemble, 39.65, 14.55, 25.51, 67.47, 15.60, 4.63, 0.00, 0.00, 98.25, 40.25, 62.21, 1.23, 11.11, 0.52, 21.08, 7.52, 50.23, 14.83, 4.83
+      [2.5787551403045654, 1.415881872177124, 1.4355676174163818, 1.3622872829437256, 1.3630497455596924, 1.491441011428833]
+      inference time:  1.1929051064741991
+      [0.03452730178833008, 0.03274846076965332, 0.03339242935180664, 0.03439188003540039, 0.03410673141479492, 0.03477001190185547]
+      ensemble time:  0.03270599180123144
+      Uncertainty threshold:  0.5
+      =====================================
+      method, ins ece, ins nll, ssc nonempty ece, ssc empty ece, ssc nonempty nll, ssc empty nll,  count, inference time
+      subnet 0,  0.6447, 5.5524, 0.1090, 0.0315, 0.8212, 0.6874, 12014, 0.00
+      subnet 1,  0.6582, 5.5356, 0.0870, 0.0323, 0.7848, 0.7034, 12034, 0.00
+      subnet 2,  0.6499, 5.5946, 0.1191, 0.0312, 0.8515, 0.6640, 11867, 0.00
+      ensemble,  0.5239, 4.5508, 0.0570, 0.0216, 0.6968, 0.4914, 8982, 0.00
+      allocated 24330.26740797546
+      ```
 
 # 5. Visualization
 1. Install Mayavi following [the official instructions](https://docs.enthought.com/mayavi/mayavi/installation.html). 
@@ -568,7 +691,7 @@ Please download the following data:
       ```
       cd PaSCo/
       python scripts/save_outputs_panoptic.py --model_path=ckpt/pasco_single.ckpt \
-            --dataset_preprocess_root=/gpfsscratch/rech/kvd/uyl37fq/pasco_preprocess/kitti \
+            --dataset_preprocess_root=/lustre/fsn1/projects/rech/kvd/uyl37fq/pasco_preprocess/kitti \
             --dataset_root=/gpfsdswork/dataset/SemanticKITTI
       ```
 3. Draw the generated output:

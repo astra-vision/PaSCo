@@ -660,5 +660,5 @@ class ResidualBlock(nn.Module):
 if __name__ == "__main__":
     n_channels = [32, 32, 64, 128, 256, 256, 128, 96, 96]
     model = MinkEncoderDecoderModified(input_dim=32, out_dim=20, channels=n_channels)
-    state_dict = torch.load("/gpfsscratch/rech/kvd/uyl37fq/code/segcontrast_pretrain/lastepoch199_model_segment_contrast.pt", map_location='cpu')
+    state_dict = torch.load("/lustre/fsn1/projects/rech/kvd/uyl37fq/code/segcontrast_pretrain/lastepoch199_model_segment_contrast.pt", map_location='cpu')
     model.load_state_dict(state_dict["model"], strict=False)

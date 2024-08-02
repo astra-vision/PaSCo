@@ -47,7 +47,7 @@ python eval_kitti_robo3d.py \
 --path_dataset /gpfsdswork/dataset/SemanticKITTI \
 --ckpt pretrained_models/WaffleIron-48-256__kitti/ckpt_last.pth \
 --config ./configs/WaffleIron-48-256__kitti.yaml \
---result_folder /gpfsscratch/rech/kvd/uyl37fq/monoscene_preprocess/kitti/waffleiron_v2 \
+--result_folder /lustre/fsn1/projects/rech/kvd/uyl37fq/monoscene_preprocess/kitti/waffleiron_v2 \
 --phase val \
 --num_workers 10 \
 --num_votes 10 \

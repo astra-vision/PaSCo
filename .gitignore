@@ -29,4 +29,6 @@ ckpt/*
 
 logs/
 
+output
+
 slurm

@@ -68,7 +68,7 @@ To evaluate the pre-trained model on the train set of SemanticKITTI, with instan
 python launch_train.py \
 --dataset semantic_kitti \
 --path_dataset /gpfswork/rech/kvd/uyl37fq/data/semantic_kitti \
---log_path /gpfsscratch/rech/kvd/uyl37fq/temp/pretrained_models/WaffleIron-48-256__40cm-BEV-cutmix-kitti/ \
+--log_path /lustre/fsn1/projects/rech/kvd/uyl37fq/temp/pretrained_models/WaffleIron-48-256__40cm-BEV-cutmix-kitti/ \
 --config ./configs/WaffleIron-48-256__40cm-BEV-cutmix-kitti.yaml \
 --fp16 \
 --restart \
@@ -132,7 +132,7 @@ python eval_kitti.py \
 --path_dataset /gpfsdswork/dataset/SemanticKITTI \
 --ckpt pretrained_models/WaffleIron-48-256__kitti/ckpt_last.pth \
 --config ./configs/WaffleIron-48-256__kitti.yaml \
---result_folder /gpfsscratch/rech/kvd/uyl37fq/monoscene_preprocess/kitti/waffleiron_v2 \
+--result_folder /lustre/fsn1/projects/rech/kvd/uyl37fq/monoscene_preprocess/kitti/waffleiron_v2 \
 --phase val \
 --num_workers 3 \
 --num_votes 10 \
@@ -148,7 +148,7 @@ python eval_kitti_robo3d.py \
 --path_dataset /gpfsdswork/dataset/SemanticKITTI \
 --ckpt pretrained_models/WaffleIron-48-256__kitti/ckpt_last.pth \
 --config ./configs/WaffleIron-48-256__kitti.yaml \
---result_folder /gpfsscratch/rech/kvd/uyl37fq/monoscene_preprocess/kitti/waffleiron_v2 \
+--result_folder /lustre/fsn1/projects/rech/kvd/uyl37fq/monoscene_preprocess/kitti/waffleiron_v2 \
 --phase val \
 --num_workers 8 \
 --num_votes 10 \
@@ -162,20 +162,20 @@ python eval_kitti_origin.py \
 --path_dataset /gpfsdswork/dataset/SemanticKITTI \
 --ckpt pretrained_models/WaffleIron-48-256__kitti/ckpt_last.pth \
 --config ./configs/WaffleIron-48-256__kitti.yaml \
---result_folder /gpfsscratch/rech/kvd/uyl37fq/monoscene_preprocess/kitti/waffleiron_test_tta \
+--result_folder /lustre/fsn1/projects/rech/kvd/uyl37fq/monoscene_preprocess/kitti/waffleiron_test_tta \
 --phase val \
 --num_workers 8 \
 --num_votes 10 \
 --batch_size 5
 
-/gpfsscratch/rech/kvd/uyl37fq/temp/prediction_kittis/
+/lustre/fsn1/projects/rech/kvd/uyl37fq/temp/prediction_kittis/
 The predictions can be evaluated using the official APIs by typing
 ```
 git clone https://github.com/PRBonn/semantic-kitti-api.git
 cd semantic-kitti-api/
 python evaluate_semantics.py \
 --dataset /gpfsdswork/dataset/SemanticKITTI/dataset \
---predictions /gpfsscratch/rech/kvd/uyl37fq/monoscene_preprocess/kitti/waffleiron_test \
+--predictions /lustre/fsn1/projects/rech/kvd/uyl37fq/monoscene_preprocess/kitti/waffleiron_test \
 --split valid
 ```
 

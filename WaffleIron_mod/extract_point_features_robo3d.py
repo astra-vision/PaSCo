@@ -146,31 +146,21 @@ if __name__ == "__main__":
         
         if id_vote == args.num_votes:
             assert batch["filename"][0] == batch["filename"][-1]
-                # label_file = batch["filename"][0][len(dataset.rootdir) + len("/dataset"):]
-                # label_file = label_file.replace("velodyne", "predictions")[:-3] + "label"
             save_file = batch["filename"][0][len(dataset.rootdir):]
-            # save_file = save_file.replace("velodyne", "seg_feats")[:-3] + "pkl"
             save_file = save_file.replace("velodyne", "seg_feats_tta_robo3d")[:-3] + "pkl"
             save_file = args.result_folder + save_file
             
-            # if os.path.exists(save_file):
-            #     continue
             os.makedirs(os.path.split(save_file)[0], exist_ok=True)
             
-            # feats = feats.cpu().numpy()
             embedding = torch.stack(embeddings, dim=0)
             embedding = embedding.cpu().numpy()
-            # out = out.cpu().numpy()
             vote = vote / (args.num_votes * args.batch_size)
             
-            # print(vote.min(), vote.max())
             id_vote = 0
             embeddings = []
             assert coords_and_intensity[0].shape[0] == vote.shape[0]
             banana = {
                 "embedding": embedding,
-                # "feats": feats.squeeze().T, 
-                # "out_logits": out.squeeze().T,
                 "coords": coords_and_intensity[0],
                 "vote": vote.cpu().numpy(),
             }
@@ -179,11 +169,4 @@ if __name__ == "__main__":
                 pickle.dump(banana, fp)
                 print("saved to {}".format(save_file))
         
-                # label_file = os.path.join(args.result_folder, label_file)
-                # label_file = args.result_folder + label_file
-                # import pdb;pdb.set_trace()
-            
-                # os.makedirs(os.path.split(label_file)[0], exist_ok=True)
-                # label.tofile(label_file)
-                # Reset count of votes
-                # id_vote = 0
+             

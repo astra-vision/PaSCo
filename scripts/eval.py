@@ -18,7 +18,7 @@ set_random_seed(42)
 )
 @click.option(
     "--dataset_preprocess_root",
-    default="/gpfsscratch/rech/kvd/uyl37fq/pasco_preprocess/kitti",
+    default="/lustre/fsn1/projects/rech/kvd/uyl37fq/pasco_preprocess/kitti",
 )
 @click.option("--model_path", default="")
 

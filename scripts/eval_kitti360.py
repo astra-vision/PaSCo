@@ -12,7 +12,7 @@ from pasco.utils.torch_util import set_random_seed
 
 @click.command()
 @click.option('--kitti360_root', default="/gpfsdswork/dataset/KITTI-360")
-@click.option('--kitti360_preprocess_root', default="/gpfsscratch/rech/kvd/uyl37fq/pasco_preprocess/kitti360")
+@click.option('--kitti360_preprocess_root', default="/lustre/fsn1/projects/rech/kvd/uyl37fq/pasco_preprocess/kitti360")
 @click.option('--kitti360_label_root', default="/gpfsdswork/dataset/SSCBench-KITTI-360")
 @click.option('--model_path')
 @click.option('--n_infers', default=2, help="#subnets")

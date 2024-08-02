@@ -210,8 +210,9 @@ class SemanticKITTI_Robo3D(PCDataset):
             'wet_ground'
         ]
         levels = ["heavy", "light", "moderate"]
-        self.rootdir = "/gpfsscratch/rech/kvd/uyl37fq/data/SemanticKITTI_C/SemanticKITTI-C"
 
+        print(f"Loading {self.phase} data from {self.rootdir}")
+        
         self.im_idx = []
         for condition in conditions:
             for level in levels:

@@ -117,7 +117,7 @@ class DummyDataset(Dataset):
 
 @click.command()
 @click.option('--kitti360_label_root', default="/gpfsdswork/dataset/SSCBench-KITTI-360", help='Semantic kitti root')
-@click.option('--kitti360_preprocess_root', default="/gpfsscratch/rech/kvd/uyl37fq/monoscene_preprocess/kitti360", help='Semantic kitti root')
+@click.option('--kitti360_preprocess_root', default="/lustre/fsn1/projects/rech/kvd/uyl37fq/monoscene_preprocess/kitti360", help='Semantic kitti root')
 @click.option('--n_process', default=10, help='number of parallel processes')
 def main(kitti360_label_root, kitti360_preprocess_root, n_process):
     dataset = DummyDataset(

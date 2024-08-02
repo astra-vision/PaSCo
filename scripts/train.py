@@ -21,7 +21,7 @@ import os
 @click.option('--log_dir', default="logs", help='logging directory')
 @click.option('--dataset_root', default="/gpfsdswork/dataset/SemanticKITTI")
 @click.option('--config_path', default="semantic-kitti.yaml")
-@click.option('--dataset_preprocess_root', default="/gpfsscratch/rech/kvd/uyl37fq/monoscene_preprocess/kitti")
+@click.option('--dataset_preprocess_root', default="/lustre/fsn1/projects/rech/kvd/uyl37fq/monoscene_preprocess/kitti")
 @click.option('--n_infers', default=1, help='number of subnets')
 
 @click.option('--lr', default=3e-4, help='learning rate')

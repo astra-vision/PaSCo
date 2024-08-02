@@ -43,7 +43,7 @@ import os
 @click.option('--alpha', default=0.0, help='uncertainty weight')
 
 @click.option('--kitti360_root', default="/gpfsdswork/dataset/KITTI-360")
-@click.option('--kitti360_preprocess_root', default="/gpfsscratch/rech/kvd/uyl37fq/pasco_preprocess/kitti360")
+@click.option('--kitti360_preprocess_root', default="/lustre/fsn1/projects/rech/kvd/uyl37fq/pasco_preprocess/kitti360")
 @click.option('--kitti360_label_root', default="/gpfsdswork/dataset/SSCBench-KITTI-360")
 
 @click.option('--transformer_enc_layers', default=0, help='Transformer encoder layer')

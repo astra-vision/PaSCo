@@ -251,7 +251,7 @@ class Kitti360Dataset(Dataset):
         return ret_data
     
     def load_file(self, path):
-        # data_seg_feats = os.path.join("/gpfsscratch/rech/kvd/uyl37fq/monoscene_preprocess/kitti/waffleiron/sequences", sequence, "seg_feats_tta", "{}.pkl".format(frame_id))
+        # data_seg_feats = os.path.join("/lustre/fsn1/projects/rech/kvd/uyl37fq/monoscene_preprocess/kitti/waffleiron/sequences", sequence, "seg_feats_tta", "{}.pkl".format(frame_id))
         with open(path, 'rb') as handle:
             data = pickle.load(handle)
             # import pdb; pdb.set_trace()
@@ -612,7 +612,7 @@ def count_label(sem_label):
     return unique.astype(int), counts
 if __name__ == "__main__":
     kitti360_root="/gpfsdswork/dataset/KITTI-360"
-    kitti360_preprocess_root="/gpfsscratch/rech/kvd/uyl37fq/monoscene_preprocess/kitti360"
+    kitti360_preprocess_root="/lustre/fsn1/projects/rech/kvd/uyl37fq/monoscene_preprocess/kitti360"
     kitti360_label_root="/gpfsdswork/dataset/SSCBench-KITTI-360"
 
     dataset = Kitti360Dataset("train", 

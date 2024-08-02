@@ -22,7 +22,7 @@ set_random_seed(42)
 @click.option('--iou_threshold', default=0.1, help="") # visualize better with 0.1 value
 @click.option('--n_workers_per_gpu', default=3, help="Number of workers per GPU")
 @click.option('--dataset_root', default="/gpfsdswork/dataset/SemanticKITTI")
-@click.option('--dataset_preprocess_root', default="/gpfsscratch/rech/kvd/uyl37fq/monoscene_preprocess/kitti")
+@click.option('--dataset_preprocess_root', default="/lustre/fsn1/projects/rech/kvd/uyl37fq/monoscene_preprocess/kitti")
 @click.option('--config_path', default="semantic-kitti.yaml")
 @click.option('--model_path', default="ckpt/pasco_single.ckpt")
 @click.option('--frame_interval', default=5)
