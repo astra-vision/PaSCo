@@ -157,6 +157,9 @@ Please download the following data:
    └── unified                         
    └── labels
    ```
+### 2.3. Robo3D
+Please download the SemanticKITTI-C following the [official instruction](https://github.com/ldkong1205/Robo3D/blob/main/docs/DATA_PREPARE.md#semantickitti-c) and put in a folder e.g. ``
+WIP
  
 
 # 3. Panoptic labels generation
