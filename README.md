@@ -172,9 +172,19 @@ Please download the following data:
    └── labels
    ```
 ### 2.3. Robo3D
-Please download the SemanticKITTI-C following the [official instruction](https://github.com/ldkong1205/Robo3D/blob/main/docs/DATA_PREPARE.md#semantickitti-c) and put in a folder e.g. `/gpfsdswork/dataset/SemanticKITTI-C`
-WIP
- 
+1. Please download the SemanticKITTI-C following the [official instruction](https://github.com/ldkong1205/Robo3D/blob/main/docs/DATA_PREPARE.md#semantickitti-c) and put in a folder e.g. `/gpfsdswork/dataset/SemanticKITTI-C`.
+2. The folder `/gpfsdswork/dataset/SemanticKITTI-C` should have the following structure:
+   ```
+   /gpfsdswork/dataset/SemanticKITTI-C
+   ├── beam_missing
+   ├── cross_sensor
+   ├── crosstalk
+   ├── fog
+   ├── incomplete_echo
+   ├── motion_blur
+   ├── snow
+   └── wet_ground
+   ```
 
 # 3. Panoptic labels generation
 ## 3.1. Semantic KITTI
