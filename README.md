@@ -34,7 +34,7 @@ If you find this work or code useful, please cite our [paper](https://arxiv.org/
 # Teaser
 ![](./teaser/psc.GIF)
 
-# Table of Contents
+
 # Table of Contents
 - [News](#news)
 - [1. Installation](#1-installation)
