@@ -589,8 +589,15 @@ class Kitti360Dataset(Dataset):
         '''
         # Define a dictionary to store the data
         data_dict = {}
-        # file_path = "./uncertainty/data/kitti360/kitti_360_match.txt"
-        file_path = "/gpfswork/rech/kvd/uyl37fq/code/uncertainty/uncertainty/data/kitti360/kitti_360_match.txt"
+        # Get the path to the current file
+        current_file_path = os.path.abspath(__file__)
+
+        # Get the folder containing the current file
+        current_folder_path = os.path.dirname(current_file_path)
+
+        # Create a new path for the file kitti_360_match.txt in the same folder
+        file_path = os.path.join(current_folder_path, 'kitti_360_match.txt')
+                                     
         # Open the file for reading
         with open(file_path, 'r') as file:
             for line in file:
