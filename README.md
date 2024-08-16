@@ -34,7 +34,7 @@ If you find this work or code useful, please cite our [paper](https://arxiv.org/
 # Teaser
 ![](./teaser/psc.GIF)
 
-# Table of Contents
+
 # Table of Contents
 - [News](#news)
 - [1. Installation](#1-installation)
@@ -172,9 +172,19 @@ Please download the following data:
    └── labels
    ```
 ### 2.3. Robo3D
-Please download the SemanticKITTI-C following the [official instruction](https://github.com/ldkong1205/Robo3D/blob/main/docs/DATA_PREPARE.md#semantickitti-c) and put in a folder e.g. `/gpfsdswork/dataset/SemanticKITTI-C`
-WIP
- 
+1. Please download the SemanticKITTI-C following the [official instruction](https://github.com/ldkong1205/Robo3D/blob/main/docs/DATA_PREPARE.md#semantickitti-c) and put in a folder e.g. `/gpfsdswork/dataset/SemanticKITTI-C`.
+2. The folder `/gpfsdswork/dataset/SemanticKITTI-C` should have the following structure:
+   ```
+   /gpfsdswork/dataset/SemanticKITTI-C
+   ├── beam_missing
+   ├── cross_sensor
+   ├── crosstalk
+   ├── fog
+   ├── incomplete_echo
+   ├── motion_blur
+   ├── snow
+   └── wet_ground
+   ```
 
 # 3. Panoptic labels generation
 ## 3.1. Semantic KITTI
@@ -619,22 +629,26 @@ WIP
       wget https://github.com/astra-vision/PaSCo/releases/download/v0.1.0/pasco.ckpt
       wget https://github.com/astra-vision/PaSCo/releases/download/v0.1.0/pasco_single.ckpt
       ```
-2. Evaluate **PaSCo without MIMO** on 1 V100-32G GPUs (1 item per GPU). `ckpt/pasco_single.ckpt` is the path to the downloaded checkpoint on `condition=beam_missing` and `level=heavy`:
-> [!NOTE]
-> There are 8 conditions and 3 levels in the Robo3D dataset. The condition can be `beam_missing`, `fog`, `cross_sensor`, `crosstalk`, `incomplete_echo`, `motion_blur`, `snow`, `wet_ground`. The level can be `light`, `medium`, `heavy`.
+2. Evaluate **PaSCo without MIMO** on 1 V100-32G GPUs (1 item per GPU) on `condition=beam_missing` and `level=heavy`.  `ckpt/pasco_single.ckpt` is the path to the downloaded checkpoint:
+
       ```
       python scripts/eval_robo3d.py --n_infers=1 --model_path=ckpt/pasco_single.ckpt \
             --dataset_preprocess_root=/lustre/fsn1/projects/rech/kvd/uyl37fq/pasco_preprocess/kitti \
             --dataset_root=/gpfsdswork/dataset/SemanticKITTI \
             --condition=beam_missing --level=heavy
       ```
-3. Evaluate **PaSCo** on 1 V100-32G GPUs (1 item per GPU). `ckpt/pasco.ckpt` is the path to the downloaded checkpoint:
+
+
+4. Evaluate **PaSCo** on 1 V100-32G GPUs (1 item per GPU) on `condition=beam_missing` and `level=heavy`.  `ckpt/pasco.ckpt` is the path to the downloaded checkpoint:
       ```
       python scripts/eval_robo3d.py --n_infers=3 --model_path=ckpt/pasco.ckpt \
             --dataset_preprocess_root=/lustre/fsn1/projects/rech/kvd/uyl37fq/pasco_preprocess/kitti \
             --dataset_root=/gpfsdswork/dataset/SemanticKITTI \
             --condition=beam_missing --level=heavy
       ```
+   
+> [!NOTE]
+> The Robo3D dataset contains 8 conditions and 3 levels. The conditions are `beam_missing`, `fog`, `cross_sensor`, `crosstalk`, `incomplete_echo`, `motion_blur`, `snow`, and `wet_ground`. The levels are categorized as `light`, `moderate`, and `heavy`. You can modify the condition and level parameters to evaluate the model under different settings.
 
 
 # 5. Visualization
@@ -655,6 +669,7 @@ WIP
 # Acknowledgment
 We thank the authors of the following repositories for making their code and models publicly available:
 - https://github.com/valeoai/WaffleIron
+- https://github.com/NVIDIA/MinkowskiEngine
 - https://github.com/PRBonn/MaskPLS
 - https://github.com/SCPNet/Codes-for-SCPNet
 - https://github.com/astra-vision/LMSCNet
