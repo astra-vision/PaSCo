@@ -164,14 +164,14 @@ if __name__ == "__main__":
             id_vote = 0
             embeddings = []
             assert coords_and_intensity[0].shape[0] == vote.shape[0]
-            banana = {
+            item_dict = {
                 "embedding": embedding,
                 "coords": coords_and_intensity[0],
                 "vote": vote.cpu().numpy(),
             }
            
             with open(save_file, 'wb') as fp:
-                pickle.dump(banana, fp)
+                pickle.dump(item_dict, fp)
                 print("saved to {}".format(save_file))
         
               
