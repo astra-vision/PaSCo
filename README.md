@@ -112,11 +112,13 @@ If you find this work or code useful, please cite our [paper](https://arxiv.org/
 ## 2.1. Semantic KITTI
 Please download the following data into a folder e.g. `/gpfsdswork/dataset/SemanticKITTI` and unzip:
 
-- The **Semantic Scene Completion dataset v1.1** (`SemanticKITTI voxel data (700 MB)`) from [SemanticKITTI website](http://www.semantic-kitti.org/dataset.html#download)
+- **Semantic Scene Completion dataset v1.1** (`SemanticKITTI voxel data (700 MB)`) from [SemanticKITTI website](http://www.semantic-kitti.org/dataset.html#download).
 
--  The [KITTI Odometry Benchmark](http://www.cvlibs.net/datasets/kitti/eval_odometry.php) calibration data (Download odometry data set `(calibration files, 1 MB)`). 
+- **Point-wise semantic labels** (`SemanticKITTI label data (179 MB)`) from [SemanticKITTI website](http://www.semantic-kitti.org/dataset.html#download).
 
-- The[ KITTI Odometry Benchmark](http://www.cvlibs.net/datasets/kitti/eval_odometry.php) Velodyne data (Download odometry data set  `(velodyne laser data, 80 GB)`).
+- [KITTI Odometry Benchmark](http://www.cvlibs.net/datasets/kitti/eval_odometry.php) calibration data (Download odometry data set `(calibration files, 1 MB)`). 
+
+- [KITTI Odometry Benchmark](http://www.cvlibs.net/datasets/kitti/eval_odometry.php) Velodyne data (Download odometry data set  `(velodyne laser data, 80 GB)`).
 
 - The dataset folder at `/gpfsdswork/dataset/SemanticKITTI` should have the following structure:
     ```
