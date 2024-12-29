@@ -229,7 +229,7 @@ def main(
             num_nodes=1,
             devices=n_gpus,
             sync_batchnorm=True,
-            plugins=[SLURMEnvironment(requeue_signal=signal.SIGUSR1)],
+            # plugins=[SLURMEnvironment(requeue_signal=signal.SIGUSR1)],
         )
     else:
         # Train from scratch
@@ -253,7 +253,7 @@ def main(
             devices=n_gpus,
             num_nodes=1,
             sync_batchnorm=True,
-            plugins=[SLURMEnvironment(requeue_signal=signal.SIGUSR1)]
+            # plugins=[SLURMEnvironment(requeue_signal=signal.SIGUSR1)]
         )
 
     trainer.fit(model, data_module)
