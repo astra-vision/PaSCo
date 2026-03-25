@@ -62,6 +62,7 @@ If you find this work or code useful, please cite our [paper](https://arxiv.org/
 
 
 # News
+- 25/03/2026: One step towards generalized unified occupnay prediction with [OccAny: Generalized Unconstrained Urban 3D Occupancy (CVPR'26)](https://valeoai.github.io/OccAny/)
 - 02/08/2024: Code for evaluation on Robo3D has been released.
 - 30/07/2024: We added the training, evaluation, and checkpoints for PaSCo on SSCBench-KITTI360.
 - 23/07/2024: The training/evaluation code and the checkpoint for PaSCo on SemanticKITTI has been released.
